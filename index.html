@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Elite IIT — GBP &amp; SEO Performance Review</title>
+<link href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&amp;family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#150E2B; --surface:#221A4D; --surface-2:#2A2158; --border:#3D2E6B;
+  --purple:#7B5FC4; --purple-2:#9A82D9; --pink:#F0729E; --pink-2:#F5A3C7;
+  --text:#F3F0FA; --text-dim:#B9AEDA;
+  --green:#3FBE7A; --green-bg:#0F2A1D; --red:#F0837C; --red-bg:#3A1720;
+  --blue:#6FC3E8; --blue-bg:#142A3D; --amber:#E8B34E; --amber-bg:#332711;
+  --radius:18px;
+}
+*{box-sizing:border-box; margin:0; padding:0;}
+html,body{height:100%; overflow:hidden;}
+body{background:var(--bg); color:var(--text); font-family:'Inter',sans-serif; line-height:1.5; -webkit-font-smoothing:antialiased;}
+h1,h2,h3,h4{font-family:'Playfair Display',serif; font-weight:700; letter-spacing:-0.01em; color:var(--text);}
+a{color:inherit;}
+.texture{position:fixed; inset:0; pointer-events:none; z-index:0;
+  background:radial-gradient(ellipse at 15% 10%, rgba(123,95,196,0.16), transparent 55%),
+             radial-gradient(ellipse at 85% 90%, rgba(240,114,158,0.10), transparent 55%);}
+
+/* ---------- DECK / SLIDES (slideable, one visible at a time) ---------- */
+.deck{position:relative; width:100vw; height:100vh; overflow:hidden;}
+.slide{position:absolute; inset:0; display:none; flex-direction:column; justify-content:flex-start; align-items:center;
+  padding:56px 64px 90px; opacity:0; transition:opacity .3s ease; overflow-y:auto;}
+.slide.active{display:flex; opacity:1;}
+.slide-inner{max-width:1080px; width:100%; margin-top:auto; margin-bottom:auto;}
+.eyebrow{display:inline-flex; align-items:center; gap:8px; font-size:12.5px; font-weight:600; letter-spacing:0.12em;
+  text-transform:uppercase; color:var(--purple-2); margin-bottom:14px;}
+.title{font-size:32px; margin-bottom:14px; color:var(--pink-2);}
+.lede{font-size:15px; color:var(--text-dim); max-width:760px; margin-bottom:22px;}
+
+/* ---------- TITLE / COVER SLIDE ---------- */
+.title-slide{text-align:center; align-items:center;}
+.title-slide h1{font-size:46px; line-height:1.15; margin-bottom:18px; color:var(--pink-2);
+  background:linear-gradient(135deg,var(--pink-2),var(--purple-2)); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;}
+.title-slide .subtitle{font-size:16px; color:var(--text-dim); max-width:640px; margin:0 auto 28px;}
+.title-tags{display:flex; gap:10px; justify-content:center; flex-wrap:wrap;}
+.title-tag{font-size:12.5px; font-weight:500; padding:8px 16px; border-radius:20px; border:1px solid var(--border);
+  background:var(--surface); color:var(--text-dim);}
+.title-tag.strong{background:var(--surface-2); color:var(--pink-2); border-color:var(--pink); font-weight:600;}
+
+/* ---------- AGENDA ---------- */
+.agenda-list{display:flex; flex-direction:column; gap:0; max-width:640px; margin:0 auto;}
+.agenda-item{display:flex; align-items:center; gap:18px; padding:16px 4px; border-bottom:1px solid var(--border);}
+.agenda-num{font-family:'JetBrains Mono',monospace; font-size:13px; color:var(--pink-2); width:28px; flex-shrink:0;}
+.agenda-icon{width:38px; height:38px; border-radius:10px; background:var(--surface-2); border:1px solid var(--border);
+  display:flex; align-items:center; justify-content:center; font-size:17px; color:var(--pink-2); flex-shrink:0;}
+.agenda-text b{font-size:15px; display:block;}
+.agenda-text span{font-size:12.5px; color:var(--text-dim);}
+
+/* ---------- GENERIC BUILDING BLOCKS (reused across sections) ---------- */
+.grid-2{display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-bottom:18px;}
+.grid-3{display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px; margin-bottom:18px;}
+.card-purple{background:linear-gradient(155deg,var(--surface-2),var(--surface)); border:1px solid var(--border);
+  border-radius:var(--radius); padding:22px;}
+.card-outline{background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:22px;}
+.card-purple h3, .card-outline h3{font-size:16px; margin-bottom:12px; display:flex; align-items:center; gap:8px; color:var(--pink-2);}
+.card-purple ul, .card-outline ul{list-style:none; display:flex; flex-direction:column; gap:9px;}
+.card-purple li, .card-outline li{font-size:13.5px; color:var(--text-dim); padding-left:18px; position:relative;}
+.card-purple li:before, .card-outline li:before{content:"→"; position:absolute; left:0; color:var(--pink);}
+.card-purple li b, .card-outline li b{color:var(--text); font-weight:600;}
+
+.callout{display:flex; gap:12px; align-items:flex-start; padding:16px 18px; border-radius:14px; font-size:13.5px; margin-bottom:14px;}
+.callout i{font-size:18px; margin-top:1px; flex-shrink:0;}
+.callout.blue{background:var(--blue-bg); border:1px solid #2A5578; color:#CFE9F7;}
+.callout.blue i{color:var(--blue);}
+.callout.red{background:var(--red-bg); border:1px solid #7A3038; color:#F7D4D2;}
+.callout.red i{color:var(--red);}
+.callout.green{background:var(--green-bg); border:1px solid #2E6B44; color:#CFEEDC;}
+.callout.green i{color:var(--green);}
+.callout.amber{background:var(--amber-bg); border:1px solid #6B5324; color:#F5E3BE;}
+.callout.amber i{color:var(--amber);}
+.callout b{color:inherit;}
+
+.stat-trio{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-bottom:20px;}
+.stat-trio-4{display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-bottom:20px;}
+.stat-block{background:var(--surface); border:1px solid var(--border); border-radius:14px; padding:16px; text-align:center;}
+.stat-block .big{font-family:'JetBrains Mono',monospace; font-size:26px; font-weight:600; color:var(--pink-2); margin-bottom:4px;}
+.stat-block .lbl{font-size:11.5px; color:var(--text-dim); line-height:1.35;}
+
+table.data-table{width:100%; border-collapse:collapse; font-size:13px; margin-bottom:16px;}
+table.data-table th{text-align:left; padding:9px 12px; color:var(--purple-2); font-weight:600; font-size:11.5px;
+  text-transform:uppercase; letter-spacing:.04em; border-bottom:1px solid var(--border);}
+table.data-table td{padding:9px 12px; border-bottom:1px solid var(--border); color:var(--text);}
+table.data-table tr:last-child td{border-bottom:none;}
+.num-cell{font-family:'JetBrains Mono',monospace; text-align:right;}
+.hl{color:var(--pink-2); font-weight:600;}
+
+.donut-row{display:flex; align-items:center; gap:22px; flex-wrap:wrap;}
+.donut-legend{display:flex; flex-direction:column; gap:6px;}
+.legend-item{display:flex; align-items:center; gap:8px; font-size:12.5px; color:var(--text-dim);}
+.legend-dot{width:9px; height:9px; border-radius:50%; flex-shrink:0;}
+.legend-item b{color:var(--text);}
+
+.timeline-row{display:flex; align-items:stretch; gap:0; margin:26px 0;}
+.timeline-node{flex:1; position:relative; padding:0 10px; text-align:center;}
+.timeline-node:not(:last-child):after{content:""; position:absolute; top:20px; right:-10px; width:calc(100% + 20px); height:2px; background:var(--border);}
+.timeline-dot{width:40px; height:40px; border-radius:50%; background:var(--surface-2); border:2px solid var(--pink); margin:0 auto 10px;
+  display:flex; align-items:center; justify-content:center; font-size:16px; color:var(--pink-2); position:relative; z-index:1;}
+.timeline-node h5{font-size:13.5px; margin-bottom:4px;}
+.timeline-node p{font-size:11.5px; color:var(--text-dim);}
+
+/* ---------- NAVIGATION UI (slideable controls) ---------- */
+.nav-controls{position:fixed; bottom:0; left:0; right:0; z-index:200; display:flex; align-items:center; justify-content:space-between;
+  padding:14px 26px; background:linear-gradient(0deg, rgba(21,14,43,0.97), rgba(21,14,43,0.85) 70%, transparent);
+  backdrop-filter:blur(10px);}
+.nav-left{display:flex; align-items:center; gap:14px;}
+.nav-brand{font-family:'Playfair Display',serif; font-weight:700; font-size:14px; color:var(--pink-2); display:flex; align-items:center; gap:7px;}
+.slide-counter{font-family:'JetBrains Mono',monospace; font-size:12.5px; color:var(--text-dim);}
+.progress-track{position:fixed; top:0; left:0; right:0; height:3px; background:var(--border); z-index:201;}
+.progress-fill{height:100%; background:linear-gradient(90deg,var(--purple),var(--pink)); transition:width .3s ease; width:0%;}
+.nav-right{display:flex; align-items:center; gap:8px;}
+.ctrl-btn{width:38px; height:38px; border-radius:10px; background:var(--surface); border:1px solid var(--border);
+  display:flex; align-items:center; justify-content:center; cursor:pointer; color:var(--text); font-size:16px; transition:all .15s ease;}
+.ctrl-btn:hover{background:var(--surface-2); color:var(--pink-2); border-color:var(--pink);}
+.ctrl-btn.disabled{opacity:.3; pointer-events:none;}
+.jump-btn{font-size:12px; padding:9px 14px; border-radius:10px; background:var(--surface); border:1px solid var(--border);
+  color:var(--text-dim); cursor:pointer; display:flex; align-items:center; gap:6px; transition:all .15s ease;}
+.jump-btn:hover{color:var(--text); border-color:var(--purple-2);}
+
+/* Optional-slide badge */
+.opt-badge{display:inline-flex; align-items:center; gap:5px; font-size:10.5px; font-weight:600; text-transform:uppercase;
+  letter-spacing:.05em; color:var(--amber); background:var(--amber-bg); border:1px solid #6B5324; padding:4px 10px; border-radius:20px; margin-bottom:10px;}
+
+/* Jump menu overlay */
+#jumpMenu{position:fixed; inset:0; z-index:300; background:rgba(21,14,43,0.96); backdrop-filter:blur(6px);
+  display:none; align-items:center; justify-content:center; padding:40px;}
+#jumpMenu.open{display:flex;}
+.jump-panel{max-width:900px; width:100%; max-height:80vh; overflow-y:auto; background:var(--surface); border:1px solid var(--border);
+  border-radius:20px; padding:28px;}
+.jump-panel h3{font-size:18px; margin-bottom:16px; color:var(--pink-2);}
+.jump-grid{display:grid; grid-template-columns:1fr 1fr; gap:8px;}
+.jump-slide-btn{text-align:left; font-size:12.5px; padding:10px 14px; border-radius:10px; background:var(--surface-2);
+  border:1px solid var(--border); color:var(--text-dim); cursor:pointer; display:flex; align-items:center; gap:8px;}
+.jump-slide-btn:hover{color:var(--text); border-color:var(--pink);}
+.jump-slide-btn .n{font-family:'JetBrains Mono',monospace; color:var(--purple-2); flex-shrink:0;}
+.jump-close{position:absolute; top:24px; right:34px; cursor:pointer; font-size:22px; color:var(--text-dim);}
+
+.mini-table{width:100%; border-collapse:collapse; margin-top:10px;}
+.mini-table th{font-size:10.5px; text-transform:uppercase; color:var(--text-dim); text-align:left; padding:6px 8px; border-bottom:1px solid var(--border);}
+.mini-table td{padding:9px 8px; font-size:12.5px; border-bottom:1px solid var(--border); color:var(--text-dim);}
+.mini-table tr:last-child td{border-bottom:none;}
+.mini-table td.hl{color:var(--pink-2); font-weight:600;}
+.mini-table td:first-child{color:var(--text); font-weight:500;}
+
+/* ---------- RANK TABLE (reused from GBP source deck for raw-data slides) ---------- */
+.rank-table{width:100%; border-collapse:collapse; font-size:13px; margin-bottom:16px;}
+.rank-table th{text-align:left; padding:9px 12px; color:var(--purple-2); font-weight:600; font-size:11.5px;
+  text-transform:uppercase; letter-spacing:.04em; border-bottom:1px solid var(--border);}
+.rank-table td{padding:9px 12px; border-bottom:1px solid var(--border); font-size:13px; vertical-align:middle;}
+.rank-table tr:last-child td{border-bottom:none;}
+.rank-table td.kw{color:var(--text); font-weight:500;}
+.rank-table th.branch-col, .rank-table td.branch-col{text-align:center; width:100px;}
+.rankval{font-family:'JetBrains Mono',monospace; font-size:12px; font-weight:500; min-width:20px; text-align:left;}
+.rankval.good{color:var(--green);}
+.rankval.mid{color:var(--amber);}
+.rankval.bad{color:var(--red);}
+.rankval.na{color:var(--text-dim); font-style:italic;}
+.rankpill{display:inline-flex; align-items:center; gap:6px;}
+.rankbar{position:relative; width:46px; height:3px; background:var(--border); border-radius:2px; display:inline-block;}
+.rankdot{position:absolute; top:50%; width:7px; height:7px; border-radius:50%; transform:translate(-50%,-50%);}
+.nabar{width:46px; height:3px; background:var(--border); border-radius:2px; display:inline-block; opacity:.4;}
+@media(max-width:900px){
+  html,body{overflow-x:hidden;}
+  .rank-table,.data-table,.mini-table{display:block; overflow-x:auto; -webkit-overflow-scrolling:touch; white-space:nowrap;}
+  .grid-2,.grid-3,.stat-trio,.stat-trio-4{grid-template-columns:1fr;}
+  .title-slide h1{font-size:32px;}
+  .slide{padding:40px 20px 108px; overflow-x:hidden; -webkit-overflow-scrolling:touch;}
+  .card-purple,.card-outline{padding:18px;}
+  .timeline-row{flex-direction:column; align-items:stretch; gap:16px; margin:20px 0;}
+  .timeline-node{padding:0; text-align:left; display:flex; align-items:flex-start; gap:14px;}
+  .timeline-node:not(:last-child):after{display:none;}
+  .timeline-dot{margin:0; flex-shrink:0;}
+  .nav-brand .brand-text{display:none;}
+  .jump-btn .jump-text{display:none;}
+  .jump-btn{padding:9px 11px;}
+  .nav-left{gap:10px;}
+  .nav-controls{padding:12px 14px calc(12px + env(safe-area-inset-bottom));}
+  .jump-grid{grid-template-columns:1fr;}
+  .jump-panel{padding:20px; max-height:78vh;}
+  #jumpMenu{padding:18px;}
+}
+@media(max-width:480px){
+  .title-slide h1{font-size:25px;}
+  .title-slide .subtitle{font-size:13.5px;}
+  .title{font-size:22px;}
+  .lede{font-size:13px;}
+  .eyebrow{font-size:11px;}
+  .slide{padding:30px 15px 108px;}
+  .card-purple,.card-outline{padding:15px;}
+  .stat-block{padding:12px;}
+  .stat-block .big{font-size:20px;}
+  .stat-block .lbl{font-size:10.5px;}
+  .ctrl-btn{width:34px; height:34px; font-size:14px;}
+  .slide-counter{font-size:11px;}
+  .nav-brand{font-size:12.5px;}
+  table.data-table, table.mini-table, table.rank-table{font-size:11.5px !important;}
+}
+
+
+.rankpill{display:inline-flex; flex-direction:column; align-items:center; gap:1px;}
+.rankval{font-family:'JetBrains Mono',monospace; font-size:13px; font-weight:700;}
+.rankval.good{color:var(--green);} .rankval.mid{color:var(--amber);} .rankval.bad{color:var(--red);}
+.rankval.na{color:var(--text-dim); font-style:italic; font-weight:400; font-size:11px;}
+.delta{font-family:'JetBrains Mono',monospace; font-size:9px;}
+.delta.up{color:var(--green);} .delta.down{color:var(--red);} .delta.flat{color:var(--text-dim);}
+.delta.new{color:var(--blue); background:var(--blue-bg); padding:1px 6px; border-radius:8px; font-weight:600;}
+.delta.lost{color:var(--red); background:var(--red-bg); padding:1px 6px; border-radius:8px; font-weight:600;}
+.legend-row{display:flex; gap:16px; flex-wrap:wrap; margin-top:14px; font-size:11px; color:var(--text-dim); align-items:center;}
+.legend-row .li{display:flex; align-items:center; gap:6px;}
+.comp-table{width:100%; border-collapse:collapse; font-size:11.5px; margin-bottom:16px;}
+.comp-table th{background:var(--surface-2); color:var(--text-dim); text-transform:uppercase; font-size:9px; padding:7px; border:1px solid var(--border); text-align:center;}
+.comp-table td{padding:7px 5px; border:1px solid var(--border); text-align:center;}
+.comp-table td.kw{text-align:left; color:var(--text); font-weight:500;}
+.comp-pair{display:flex; flex-direction:column; gap:1px; font-family:'JetBrains Mono',monospace; font-size:11px;}
+.comp-pair .g{color:var(--purple-2);} .comp-pair .s{color:var(--pink-2);}
+.diverge{background:#3A172155;} .agree{background:#0F2A1D33;}
+.silo-svg{width:100%; max-width:820px; margin:16px auto; display:block;}
+.track-badge{display:inline-flex; align-items:center; gap:6px; font-size:10.5px; font-weight:600; text-transform:uppercase; letter-spacing:.04em; padding:6px 14px; border-radius:20px; margin:8px 0 14px 0;}
+.track-badge.underperform{background:var(--red-bg); color:var(--red); border:1px solid #7A3038;}
+.track-badge.perform{background:var(--green-bg); color:var(--green); border:1px solid #2E6B44;}
+.part-divider{display:flex; align-items:center; gap:14px; margin:6px 0 26px 0;}
+.part-divider .pd-badge{font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--bg); background:var(--pink-2); padding:6px 14px; border-radius:20px; font-weight:700;}
+.part-divider .pd-line{flex:1; height:1px; background:var(--border);}
+@media(max-width:900px){ .comp-table,.rank-table{display:block; overflow-x:auto; -webkit-overflow-scrolling:touch; white-space:nowrap;} }
+
+</style>
+</head>
+<body>
+<div class="texture"></div>
+<div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+<div class="deck" id="deck">
+<section class="slide active title-slide" data-section="Cover" data-slide="1">
+<div class="slide-inner title-slide">
+<div class="eyebrow"><i class="ti ti-presentation"></i> Elite IIT &middot; Performance Review</div>
+<h1>GBP &amp; SEO Performance Review</h1>
+<p class="subtitle">Google Business Profile and organic search rankings across all 4 branches, tracked from June/July through 3 September 2026.</p>
+<div class="title-tags">
+<div class="title-tag strong"><i class="ti ti-calendar"></i> 3 September 2026</div>
+<div class="title-tag">4 branches</div>
+<div class="title-tag">Prepared by Umair Abdullah</div>
+</div>
+</div>
+</section>
+<section class="slide" data-section="Cover" data-slide="2">
+<div class="slide-inner">
+<div class="eyebrow"><i class="ti ti-list-details"></i> What we'll cover</div>
+<h2 class="title">Agenda</h2>
+<div class="agenda-list">
+<div class="agenda-item"><span class="agenda-num">01</span><div class="agenda-icon"><i class="ti ti-map-pin"></i></div>
+<div class="agenda-text"><b>Part 1 — Google Business Profile</b><span>Map-pack rankings by category and branch, Jun/Aug &rarr; Sep</span></div></div>
+<div class="agenda-item"><span class="agenda-num">02</span><div class="agenda-icon"><i class="ti ti-search"></i></div>
+<div class="agenda-text"><b>Part 2 — Organic SEO</b><span>Website rankings by category and branch, Jul &rarr; Sep</span></div></div>
+<div class="agenda-item"><span class="agenda-num">03</span><div class="agenda-icon"><i class="ti ti-arrows-diff"></i></div>
+<div class="agenda-text"><b>GBP vs SEO</b><span>Where the two channels agree, and where they diverge</span></div></div>
+<div class="agenda-item"><span class="agenda-num">04</span><div class="agenda-icon"><i class="ti ti-sitemap"></i></div>
+<div class="agenda-text"><b>The Structural Gap</b><span>Why so many keywords are still unranked</span></div></div>
+<div class="agenda-item"><span class="agenda-num">05</span><div class="agenda-icon"><i class="ti ti-flag-check"></i></div>
+<div class="agenda-text"><b>Roadmap &amp; Next Check-in</b><span>Priorities and what "improved" needs to mean</span></div></div>
+</div>
+</div>
+</section>
+<section class="slide" data-section="GBP Review" data-slide="3">
+<div class="slide-inner">
+<div class="part-divider"><span class="pd-badge">PART 1</span><span class="pd-line"></span></div>
+<div class="eyebrow"><i class="ti ti-map-pin"></i> Google Maps / Local Pack Rankings</div>
+<h2 class="title">GBP Strategy — September Update</h2>
+<p class="lede">7 June to 3 September 2026, Google Business Profile / Local Pack rankings across all 4 branches.</p>
+<div class="stat-trio-4"><div class="stat-block" style="border-color:var(--green);"><div class="big" style="color:var(--green);">3.7</div><div class="lbl">Koramangala avg</div></div><div class="stat-block" style="border-color:var(--amber);"><div class="big" style="color:var(--amber);">7.7</div><div class="lbl">Yelahanka avg</div></div><div class="stat-block" style="border-color:var(--red);"><div class="big" style="color:var(--red);">11.3</div><div class="lbl">Jayanagar avg</div></div><div class="stat-block" style="border-color:var(--green);"><div class="big" style="color:var(--green);">3.5</div><div class="lbl">Malleshwaram avg</div></div></div>
+</div>
+</section>
+<section class="slide" data-section="GBP Review" data-slide="4">
+<div class="slide-inner">
+<div class="eyebrow"><i class="ti ti-heartbeat"></i> GBP &middot; NEET</div>
+<h2 class="title">NEET</h2>
+<p class="lede">Medical entrance exam prep &middot; K/Y/J/M = branch</p>
+<table class="rank-table"><tr><th>Keyword</th><th class="branch-col">Koramangala</th><th class="branch-col">Yelahanka</th><th class="branch-col">Jayanagar</th><th class="branch-col">Malleshwaram</th></tr><tr><td class="kw">Neet Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval good">1</span><span class="delta flat">= from 1</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval good">4</span><span class="delta up">&#9650; from 7</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval good">5</span><span class="delta up">&#9650; from 6</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval good">1</span><span class="delta flat">= from 1</span></span></td></tr></table>
+<div class="legend-row">
+<div class="li"><span class="delta up">&#9650; from N</span> improved</div>
+<div class="li"><span class="delta down">&#9660; from N</span> worsened</div>
+<div class="li"><span class="delta new">NEW</span> wasn't ranking before</div>
+<div class="li"><span class="delta lost">LOST</span> was ranking, isn't now</div>
+</div>
+</div>
+</section>
+<section class="slide" data-section="GBP Review" data-slide="5">
+<div class="slide-inner">
+<div class="eyebrow"><i class="ti ti-shield-star"></i> GBP &middot; Navodaya / Sainik / RMS</div>
+<h2 class="title">Navodaya / Sainik / RMS</h2>
+<p class="lede">Defense & residential school entrance prep &middot; K/Y/J/M = branch</p>
+<table class="rank-table"><tr><th>Keyword</th><th class="branch-col">Koramangala</th><th class="branch-col">Yelahanka</th><th class="branch-col">Jayanagar</th><th class="branch-col">Malleshwaram</th></tr><tr><td class="kw">Navodaya Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval mid">6</span><span class="delta up">&#9650; from 11</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval bad">23</span><span class="delta down">&#9660; from 17</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval mid">14</span><span class="delta up">&#9650; from 18</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval good">3</span><span class="delta flat">= from 3</span></span></td></tr><tr><td class="kw">Sainik School Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Sainik School Tuition</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval good">3</span><span class="delta down">&#9660; from 1</span></span></td></tr><tr><td class="kw">Sainik Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval good">1</span><span class="delta up">&#9650; from 2</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval mid">7</span><span class="delta down">&#9660; from 3</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval mid">6</span><span class="delta down">&#9660; from 3</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Rms Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval good">2</span><span class="delta flat">= from 2</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval good">2</span><span class="delta up">&#9650; from 5</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval mid">7</span><span class="delta new">NEW</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval good">4</span><span class="delta down">&#9660; from 3</span></span></td></tr></table>
+<div class="legend-row">
+<div class="li"><span class="delta up">&#9650; from N</span> improved</div>
+<div class="li"><span class="delta down">&#9660; from N</span> worsened</div>
+<div class="li"><span class="delta new">NEW</span> wasn't ranking before</div>
+<div class="li"><span class="delta lost">LOST</span> was ranking, isn't now</div>
+</div>
+</div>
+</section>
+<section class="slide" data-section="GBP Review" data-slide="6">
+<div class="slide-inner">
+<div class="eyebrow"><i class="ti ti-school"></i> GBP &middot; School Tuition</div>
+<h2 class="title">School Tuition</h2>
+<p class="lede">CBSE/ICSE/IGCSE/NCERT & 12th science/commerce tuition &middot; K/Y/J/M = branch</p>
+<table class="rank-table"><tr><th>Keyword</th><th class="branch-col">Koramangala</th><th class="branch-col">Yelahanka</th><th class="branch-col">Jayanagar</th><th class="branch-col">Malleshwaram</th></tr><tr><td class="kw">School Tuition</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval mid">15</span><span class="delta new">NEW</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval good">3</span><span class="delta up">&#9650; from 5</span></span></td></tr><tr><td class="kw">Ncert School Tuition</td><td class="branch-col"><span class="rankpill"><span class="rankval good">4</span><span class="delta new">NEW</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval mid">8</span><span class="delta new">NEW</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval good">5</span><span class="delta new">NEW</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval good">2</span><span class="delta up">&#9650; from 3</span></span></td></tr><tr><td class="kw">Cbse Tuition</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Cbse School Tuition</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval bad">18</span><span class="delta new">NEW</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval bad">30</span><span class="delta new">NEW</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval good">5</span><span class="delta flat">= from 5</span></span></td></tr><tr><td class="kw">Icse School Tuition</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval bad">21</span><span class="delta new">NEW</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval bad">26</span><span class="delta down">&#9660; from 15</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval mid">11</span><span class="delta down">&#9660; from 9</span></span></td></tr><tr><td class="kw">Igcse Tuition</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval mid">8</span><span class="delta new">NEW</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval mid">8</span><span class="delta new">NEW</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval good">4</span><span class="delta up">&#9650; from 5</span></span></td></tr><tr><td class="kw">12Th Science Tuition</td><td class="branch-col"><span class="rankpill"><span class="rankval good">3</span><span class="delta up">&#9650; from 4</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval mid">11</span><span class="delta down">&#9660; from 9</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval mid">12</span><span class="delta down">&#9660; from 10</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval good">2</span><span class="delta flat">= from 2</span></span></td></tr><tr><td class="kw">12Th Commerce Tuition</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">12Th Commerce Coaching Classes</td><td class="branch-col"><span class="rankpill"><span class="rankval good">5</span><span class="delta up">&#9650; from 12</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval good">4</span><span class="delta up">&#9650; from 8</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval mid">10</span><span class="delta up">&#9650; from 40</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval good">2</span><span class="delta up">&#9650; from 9</span></span></td></tr></table>
+<div class="legend-row">
+<div class="li"><span class="delta up">&#9650; from N</span> improved</div>
+<div class="li"><span class="delta down">&#9660; from N</span> worsened</div>
+<div class="li"><span class="delta new">NEW</span> wasn't ranking before</div>
+<div class="li"><span class="delta lost">LOST</span> was ranking, isn't now</div>
+</div>
+</div>
+</section>
+<section class="slide" data-section="GBP Review" data-slide="7">
+<div class="slide-inner">
+<div class="eyebrow"><i class="ti ti-certificate"></i> GBP &middot; Competitive & Professional Exams</div>
+<h2 class="title">Competitive & Professional Exams</h2>
+<p class="lede">CA/CS/CMA/IBPS/Banking/SSC/CLAT/CUET/KPTCL/CET/IIT &middot; K/Y/J/M = branch</p>
+<table class="rank-table"><tr><th>Keyword</th><th class="branch-col">Koramangala</th><th class="branch-col">Yelahanka</th><th class="branch-col">Jayanagar</th><th class="branch-col">Malleshwaram</th></tr><tr><td class="kw">Cet Coaching Centres</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval good">3</span><span class="delta up">&#9650; from 4</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval good">1</span><span class="delta flat">= from 1</span></span></td></tr><tr><td class="kw">Cet Coaching Classes</td><td class="branch-col"><span class="rankpill"><span class="rankval good">2</span><span class="delta up">&#9650; from 3</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Cet Coaching Centre</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval mid">9</span><span class="delta up">&#9650; from 10</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Iit Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval good">1</span><span class="delta flat">= from 1</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval good">1</span><span class="delta flat">= from 1</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval good">1</span><span class="delta up">&#9650; from 4</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval good">1</span><span class="delta flat">= from 1</span></span></td></tr><tr><td class="kw">Ca Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval mid">13</span><span class="delta flat">= from 13</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Cs Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval good">4</span><span class="delta down">&#9660; from 3</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval mid">6</span><span class="delta up">&#9650; from 11</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval mid">7</span><span class="delta flat">= from 7</span></span></td></tr><tr><td class="kw">Cma Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Cma Coaching Centre</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Ibps Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval mid">8</span><span class="delta up">&#9650; from 10</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval good">2</span><span class="delta up">&#9650; from 3</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval mid">14</span><span class="delta new">NEW</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval mid">7</span><span class="delta down">&#9660; from 5</span></span></td></tr><tr><td class="kw">Banking Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval mid">9</span><span class="delta up">&#9650; from 16</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval good">3</span><span class="delta up">&#9650; from 5</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval bad">23</span><span class="delta flat">= from 23</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval mid">7</span><span class="delta down">&#9660; from 3</span></span></td></tr><tr><td class="kw">Ssc Cgl Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Ssc Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval mid">6</span><span class="delta up">&#9650; from 7</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval good">1</span><span class="delta up">&#9650; from 6</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval mid">9</span><span class="delta flat">= from 9</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval good">3</span><span class="delta up">&#9650; from 4</span></span></td></tr><tr><td class="kw">Clat Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval mid">10</span><span class="delta new">NEW</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Cuet Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval good">2</span><span class="delta up">&#9650; from 6</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval good">1</span><span class="delta up">&#9650; from 3</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval good">5</span><span class="delta up">&#9650; from 8</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval good">2</span><span class="delta down">&#9660; from 1</span></span></td></tr><tr><td class="kw">Kptcl Coaching Classes</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Kptcl Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval good">1</span><span class="delta new">NEW</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval good">2</span><span class="delta up">&#9650; from 4</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval mid">6</span><span class="delta up">&#9650; from 11</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval good">1</span><span class="delta new">NEW</span></span></td></tr></table>
+<div class="legend-row">
+<div class="li"><span class="delta up">&#9650; from N</span> improved</div>
+<div class="li"><span class="delta down">&#9660; from N</span> worsened</div>
+<div class="li"><span class="delta new">NEW</span> wasn't ranking before</div>
+<div class="li"><span class="delta lost">LOST</span> was ranking, isn't now</div>
+</div>
+</div>
+</section>
+<section class="slide" data-section="GBP Review" data-slide="8">
+<div class="slide-inner">
+<div class="eyebrow"><i class="ti ti-building-community"></i> GBP &middot; General Coaching</div>
+<h2 class="title">General Coaching</h2>
+<p class="lede">Branch-level generic coaching queries &middot; K/Y/J/M = branch</p>
+<table class="rank-table"><tr><th>Keyword</th><th class="branch-col">Koramangala</th><th class="branch-col">Yelahanka</th><th class="branch-col">Jayanagar</th><th class="branch-col">Malleshwaram</th></tr><tr><td class="kw">Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval good">4</span><span class="delta up">&#9650; from 8</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval mid">6</span><span class="delta up">&#9650; from 8</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval mid">13</span><span class="delta up">&#9650; from 16</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval good">2</span><span class="delta down">&#9660; from 1</span></span></td></tr><tr><td class="kw">Coaching Centre</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr></table>
+<div class="legend-row">
+<div class="li"><span class="delta up">&#9650; from N</span> improved</div>
+<div class="li"><span class="delta down">&#9660; from N</span> worsened</div>
+<div class="li"><span class="delta new">NEW</span> wasn't ranking before</div>
+<div class="li"><span class="delta lost">LOST</span> was ranking, isn't now</div>
+</div>
+</div>
+</section>
+<section class="slide" data-section="GBP Review" data-slide="9">
+<div class="slide-inner">
+<div class="eyebrow"><i class="ti ti-bulb"></i> Three things this quarter's map-pack data shows</div>
+<h2 class="title">GBP Insights</h2>
+<div class="callout green">
+<i class="ti ti-map-pin-check"></i>
+<div><b>Malleshwaram is the strongest GBP branch</b>, averaging rank 3.5 with 16 keywords in the top 5 &mdash; the most of any branch &mdash; even though its organic SEO fell sharply over the same period.</div>
+</div>
+<div class="callout red">
+<i class="ti ti-alert-triangle"></i>
+<div><b>Jayanagar is the weakest branch on GBP</b>, averaging rank 11.3 with only 4 keywords in the top 5. Its biggest single move is a 30-place jump on "12th Commerce Coaching Classes" (40&rarr;10), but ICSE School Tuition fell 15&rarr;26 in the same window.</div>
+</div>
+<div class="callout amber">
+<i class="ti ti-info-circle"></i>
+<div><b>Yelahanka drifted the wrong way on average</b> (6.7&rarr;7.7), pulled down by Navodaya Coaching (17&rarr;23) and Sainik Coaching (3&rarr;7) even as several competitive-exam terms improved.</div>
+</div>
+</div>
+</section>
+<section class="slide" data-section="GBP Review" data-slide="10">
+<div class="slide-inner">
+<div class="eyebrow"><i class="ti ti-map-pin"></i> GBP &middot; Koramangala</div>
+<h2 class="title">Koramangala</h2>
+<span class="track-badge perform"><i class="ti ti-trending-up"></i>Performing</span>
+<p class="lede">Strong and improving across the board — the branch to point to when this deck needs a proof point.</p>
+<div class="stat-trio">
+<div class="stat-block"><div class="big">6.1 &rarr; 3.7</div><div class="lbl">Average rank</div></div>
+<div class="stat-block"><div class="big">17</div><div class="lbl">Not ranking</div></div>
+<div class="stat-block"><div class="big">12</div><div class="lbl">In the top 5</div></div>
+</div>
+<div class="grid-2">
+<div class="card-outline"><h3><i class="ti ti-arrow-up-right"></i>Improved</h3><table class="mini-table"><tr><th>Improved</th><th>Start &rarr; Sep 3</th></tr><tr><td><i class="ti ti-arrow-up" style="color:var(--green);"></i> 12Th Commerce Coaching Classes</td><td class="num-cell">12 &rarr; 5</td></tr><tr><td><i class="ti ti-arrow-up" style="color:var(--green);"></i> Banking Coaching</td><td class="num-cell">16 &rarr; 9</td></tr><tr><td><i class="ti ti-arrow-up" style="color:var(--green);"></i> Navodaya Coaching</td><td class="num-cell">11 &rarr; 6</td></tr><tr><td><i class="ti ti-arrow-up" style="color:var(--green);"></i> Cuet Coaching</td><td class="num-cell">6 &rarr; 2</td></tr><tr><td><i class="ti ti-arrow-up" style="color:var(--green);"></i> Coaching</td><td class="num-cell">8 &rarr; 4</td></tr><tr><td><i class="ti ti-arrow-up" style="color:var(--green);"></i> Ibps Coaching</td><td class="num-cell">10 &rarr; 8</td></tr></table></div>
+<div class="card-outline"><h3><i class="ti ti-arrow-down-right"></i>Declined</h3><table class="mini-table"><tr><th>Declined</th><th>Start &rarr; Sep 3</th></tr><tr><td><i class="ti ti-arrow-down" style="color:var(--red);"></i> Cs Coaching</td><td class="num-cell">3 &rarr; 4</td></tr></table></div>
+</div>
+</div>
+</section>
+<section class="slide" data-section="GBP Review" data-slide="11">
+<div class="slide-inner">
+<div class="eyebrow"><i class="ti ti-list-numbers"></i> GBP &middot; Koramangala &middot; Full rankings</div>
+<h2 class="title">Koramangala &mdash; all tracked keywords</h2>
+<p class="lede">Every keyword checked for this branch, start of tracking vs. 3 September.</p>
+<table class="rank-table"><tbody><tr><td class="kw">Neet Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval good">1</span><span class="delta flat">= from 1</span></span></td></tr><tr><td class="kw">Navodaya Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval mid">6</span><span class="delta up">&#9650; from 11</span></span></td></tr><tr><td class="kw">Sainik School Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Sainik School Tuition</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Sainik Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval good">1</span><span class="delta up">&#9650; from 2</span></span></td></tr><tr><td class="kw">Rms Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval good">2</span><span class="delta flat">= from 2</span></span></td></tr><tr><td class="kw">School Tuition</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Ncert School Tuition</td><td class="branch-col"><span class="rankpill"><span class="rankval good">4</span><span class="delta new">NEW</span></span></td></tr><tr><td class="kw">Cbse Tuition</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Cbse School Tuition</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Icse School Tuition</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Igcse Tuition</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">12Th Science Tuition</td><td class="branch-col"><span class="rankpill"><span class="rankval good">3</span><span class="delta up">&#9650; from 4</span></span></td></tr><tr><td class="kw">12Th Commerce Tuition</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">12Th Commerce Coaching Classes</td><td class="branch-col"><span class="rankpill"><span class="rankval good">5</span><span class="delta up">&#9650; from 12</span></span></td></tr><tr><td class="kw">Cet Coaching Centres</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Cet Coaching Classes</td><td class="branch-col"><span class="rankpill"><span class="rankval good">2</span><span class="delta up">&#9650; from 3</span></span></td></tr><tr><td class="kw">Cet Coaching Centre</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Iit Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval good">1</span><span class="delta flat">= from 1</span></span></td></tr><tr><td class="kw">Ca Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Cs Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval good">4</span><span class="delta down">&#9660; from 3</span></span></td></tr><tr><td class="kw">Cma Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Cma Coaching Centre</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Ibps Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval mid">8</span><span class="delta up">&#9650; from 10</span></span></td></tr><tr><td class="kw">Banking Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval mid">9</span><span class="delta up">&#9650; from 16</span></span></td></tr><tr><td class="kw">Ssc Cgl Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Ssc Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval mid">6</span><span class="delta up">&#9650; from 7</span></span></td></tr><tr><td class="kw">Clat Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Cuet Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval good">2</span><span class="delta up">&#9650; from 6</span></span></td></tr><tr><td class="kw">Kptcl Coaching Classes</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Kptcl Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval good">1</span><span class="delta new">NEW</span></span></td></tr><tr><td class="kw">Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval good">4</span><span class="delta up">&#9650; from 8</span></span></td></tr><tr><td class="kw">Coaching Centre</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr></tbody></table>
+</div>
+</section>
+<section class="slide" data-section="GBP Review" data-slide="12">
+<div class="slide-inner">
+<div class="eyebrow"><i class="ti ti-map-pin"></i> GBP &middot; Yelahanka</div>
+<h2 class="title">Yelahanka</h2>
+<span class="track-badge perform"><i class="ti ti-trending-up"></i>Performing</span>
+<p class="lede">Solid and mostly improving on SEO; GBP has drifted slightly worse and is worth a light check-in.</p>
+<div class="stat-trio">
+<div class="stat-block"><div class="big">6.7 &rarr; 7.7</div><div class="lbl">Average rank</div></div>
+<div class="stat-block"><div class="big">11</div><div class="lbl">Not ranking</div></div>
+<div class="stat-block"><div class="big">10</div><div class="lbl">In the top 5</div></div>
+</div>
+<div class="grid-2">
+<div class="card-outline"><h3><i class="ti ti-arrow-up-right"></i>Improved</h3><table class="mini-table"><tr><th>Improved</th><th>Start &rarr; Sep 3</th></tr><tr><td><i class="ti ti-arrow-up" style="color:var(--green);"></i> Cs Coaching</td><td class="num-cell">11 &rarr; 6</td></tr><tr><td><i class="ti ti-arrow-up" style="color:var(--green);"></i> Ssc Coaching</td><td class="num-cell">6 &rarr; 1</td></tr><tr><td><i class="ti ti-arrow-up" style="color:var(--green);"></i> 12Th Commerce Coaching Classes</td><td class="num-cell">8 &rarr; 4</td></tr><tr><td><i class="ti ti-arrow-up" style="color:var(--green);"></i> Neet Coaching</td><td class="num-cell">7 &rarr; 4</td></tr><tr><td><i class="ti ti-arrow-up" style="color:var(--green);"></i> Rms Coaching</td><td class="num-cell">5 &rarr; 2</td></tr><tr><td><i class="ti ti-arrow-up" style="color:var(--green);"></i> Banking Coaching</td><td class="num-cell">5 &rarr; 3</td></tr></table></div>
+<div class="card-outline"><h3><i class="ti ti-arrow-down-right"></i>Declined</h3><table class="mini-table"><tr><th>Declined</th><th>Start &rarr; Sep 3</th></tr><tr><td><i class="ti ti-arrow-down" style="color:var(--red);"></i> Navodaya Coaching</td><td class="num-cell">17 &rarr; 23</td></tr><tr><td><i class="ti ti-arrow-down" style="color:var(--red);"></i> Sainik Coaching</td><td class="num-cell">3 &rarr; 7</td></tr><tr><td><i class="ti ti-arrow-down" style="color:var(--red);"></i> 12Th Science Tuition</td><td class="num-cell">9 &rarr; 11</td></tr></table></div>
+</div>
+</div>
+</section>
+<section class="slide" data-section="GBP Review" data-slide="13">
+<div class="slide-inner">
+<div class="eyebrow"><i class="ti ti-list-numbers"></i> GBP &middot; Yelahanka &middot; Full rankings</div>
+<h2 class="title">Yelahanka &mdash; all tracked keywords</h2>
+<p class="lede">Every keyword checked for this branch, start of tracking vs. 3 September.</p>
+<table class="rank-table"><tbody><tr><td class="kw">Neet Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval good">4</span><span class="delta up">&#9650; from 7</span></span></td></tr><tr><td class="kw">Navodaya Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval bad">23</span><span class="delta down">&#9660; from 17</span></span></td></tr><tr><td class="kw">Sainik School Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Sainik School Tuition</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Sainik Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval mid">7</span><span class="delta down">&#9660; from 3</span></span></td></tr><tr><td class="kw">Rms Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval good">2</span><span class="delta up">&#9650; from 5</span></span></td></tr><tr><td class="kw">School Tuition</td><td class="branch-col"><span class="rankpill"><span class="rankval mid">15</span><span class="delta new">NEW</span></span></td></tr><tr><td class="kw">Ncert School Tuition</td><td class="branch-col"><span class="rankpill"><span class="rankval mid">8</span><span class="delta new">NEW</span></span></td></tr><tr><td class="kw">Cbse Tuition</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Cbse School Tuition</td><td class="branch-col"><span class="rankpill"><span class="rankval bad">18</span><span class="delta new">NEW</span></span></td></tr><tr><td class="kw">Icse School Tuition</td><td class="branch-col"><span class="rankpill"><span class="rankval bad">21</span><span class="delta new">NEW</span></span></td></tr><tr><td class="kw">Igcse Tuition</td><td class="branch-col"><span class="rankpill"><span class="rankval mid">8</span><span class="delta new">NEW</span></span></td></tr><tr><td class="kw">12Th Science Tuition</td><td class="branch-col"><span class="rankpill"><span class="rankval mid">11</span><span class="delta down">&#9660; from 9</span></span></td></tr><tr><td class="kw">12Th Commerce Tuition</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">12Th Commerce Coaching Classes</td><td class="branch-col"><span class="rankpill"><span class="rankval good">4</span><span class="delta up">&#9650; from 8</span></span></td></tr><tr><td class="kw">Cet Coaching Centres</td><td class="branch-col"><span class="rankpill"><span class="rankval good">3</span><span class="delta up">&#9650; from 4</span></span></td></tr><tr><td class="kw">Cet Coaching Classes</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Cet Coaching Centre</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Iit Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval good">1</span><span class="delta flat">= from 1</span></span></td></tr><tr><td class="kw">Ca Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval mid">13</span><span class="delta flat">= from 13</span></span></td></tr><tr><td class="kw">Cs Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval mid">6</span><span class="delta up">&#9650; from 11</span></span></td></tr><tr><td class="kw">Cma Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Cma Coaching Centre</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Ibps Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval good">2</span><span class="delta up">&#9650; from 3</span></span></td></tr><tr><td class="kw">Banking Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval good">3</span><span class="delta up">&#9650; from 5</span></span></td></tr><tr><td class="kw">Ssc Cgl Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Ssc Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval good">1</span><span class="delta up">&#9650; from 6</span></span></td></tr><tr><td class="kw">Clat Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval mid">10</span><span class="delta new">NEW</span></span></td></tr><tr><td class="kw">Cuet Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval good">1</span><span class="delta up">&#9650; from 3</span></span></td></tr><tr><td class="kw">Kptcl Coaching Classes</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Kptcl Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval good">2</span><span class="delta up">&#9650; from 4</span></span></td></tr><tr><td class="kw">Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval mid">6</span><span class="delta up">&#9650; from 8</span></span></td></tr><tr><td class="kw">Coaching Centre</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr></tbody></table>
+</div>
+</section>
+<section class="slide" data-section="GBP Review" data-slide="14">
+<div class="slide-inner">
+<div class="eyebrow"><i class="ti ti-map-pin"></i> GBP &middot; Jayanagar</div>
+<h2 class="title">Jayanagar</h2>
+<span class="track-badge underperform"><i class="ti ti-trending-down"></i>Underperforming</span>
+<p class="lede">The weakest branch on both channels — worsening on GBP and drifting on SEO, concentrated in CA and a few competitive-exam terms.</p>
+<div class="stat-trio">
+<div class="stat-block"><div class="big">13.3 &rarr; 11.3</div><div class="lbl">Average rank</div></div>
+<div class="stat-block"><div class="big">15</div><div class="lbl">Not ranking</div></div>
+<div class="stat-block"><div class="big">4</div><div class="lbl">In the top 5</div></div>
+</div>
+<div class="grid-2">
+<div class="card-outline"><h3><i class="ti ti-arrow-up-right"></i>Improved</h3><table class="mini-table"><tr><th>Improved</th><th>Start &rarr; Sep 3</th></tr><tr><td><i class="ti ti-arrow-up" style="color:var(--green);"></i> 12Th Commerce Coaching Classes</td><td class="num-cell">40 &rarr; 10</td></tr><tr><td><i class="ti ti-arrow-up" style="color:var(--green);"></i> Kptcl Coaching</td><td class="num-cell">11 &rarr; 6</td></tr><tr><td><i class="ti ti-arrow-up" style="color:var(--green);"></i> Navodaya Coaching</td><td class="num-cell">18 &rarr; 14</td></tr><tr><td><i class="ti ti-arrow-up" style="color:var(--green);"></i> Iit Coaching</td><td class="num-cell">4 &rarr; 1</td></tr><tr><td><i class="ti ti-arrow-up" style="color:var(--green);"></i> Cuet Coaching</td><td class="num-cell">8 &rarr; 5</td></tr><tr><td><i class="ti ti-arrow-up" style="color:var(--green);"></i> Coaching</td><td class="num-cell">16 &rarr; 13</td></tr></table></div>
+<div class="card-outline"><h3><i class="ti ti-arrow-down-right"></i>Declined</h3><table class="mini-table"><tr><th>Declined</th><th>Start &rarr; Sep 3</th></tr><tr><td><i class="ti ti-arrow-down" style="color:var(--red);"></i> Icse School Tuition</td><td class="num-cell">15 &rarr; 26</td></tr><tr><td><i class="ti ti-arrow-down" style="color:var(--red);"></i> Sainik Coaching</td><td class="num-cell">3 &rarr; 6</td></tr><tr><td><i class="ti ti-arrow-down" style="color:var(--red);"></i> 12Th Science Tuition</td><td class="num-cell">10 &rarr; 12</td></tr></table></div>
+</div>
+</div>
+</section>
+<section class="slide" data-section="GBP Review" data-slide="15">
+<div class="slide-inner">
+<div class="eyebrow"><i class="ti ti-list-numbers"></i> GBP &middot; Jayanagar &middot; Full rankings</div>
+<h2 class="title">Jayanagar &mdash; all tracked keywords</h2>
+<p class="lede">Every keyword checked for this branch, start of tracking vs. 3 September.</p>
+<table class="rank-table"><tbody><tr><td class="kw">Neet Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval good">5</span><span class="delta up">&#9650; from 6</span></span></td></tr><tr><td class="kw">Navodaya Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval mid">14</span><span class="delta up">&#9650; from 18</span></span></td></tr><tr><td class="kw">Sainik School Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Sainik School Tuition</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Sainik Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval mid">6</span><span class="delta down">&#9660; from 3</span></span></td></tr><tr><td class="kw">Rms Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval mid">7</span><span class="delta new">NEW</span></span></td></tr><tr><td class="kw">School Tuition</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Ncert School Tuition</td><td class="branch-col"><span class="rankpill"><span class="rankval good">5</span><span class="delta new">NEW</span></span></td></tr><tr><td class="kw">Cbse Tuition</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Cbse School Tuition</td><td class="branch-col"><span class="rankpill"><span class="rankval bad">30</span><span class="delta new">NEW</span></span></td></tr><tr><td class="kw">Icse School Tuition</td><td class="branch-col"><span class="rankpill"><span class="rankval bad">26</span><span class="delta down">&#9660; from 15</span></span></td></tr><tr><td class="kw">Igcse Tuition</td><td class="branch-col"><span class="rankpill"><span class="rankval mid">8</span><span class="delta new">NEW</span></span></td></tr><tr><td class="kw">12Th Science Tuition</td><td class="branch-col"><span class="rankpill"><span class="rankval mid">12</span><span class="delta down">&#9660; from 10</span></span></td></tr><tr><td class="kw">12Th Commerce Tuition</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">12Th Commerce Coaching Classes</td><td class="branch-col"><span class="rankpill"><span class="rankval mid">10</span><span class="delta up">&#9650; from 40</span></span></td></tr><tr><td class="kw">Cet Coaching Centres</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Cet Coaching Classes</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Cet Coaching Centre</td><td class="branch-col"><span class="rankpill"><span class="rankval mid">9</span><span class="delta up">&#9650; from 10</span></span></td></tr><tr><td class="kw">Iit Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval good">1</span><span class="delta up">&#9650; from 4</span></span></td></tr><tr><td class="kw">Ca Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Cs Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Cma Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Cma Coaching Centre</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Ibps Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval mid">14</span><span class="delta new">NEW</span></span></td></tr><tr><td class="kw">Banking Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval bad">23</span><span class="delta flat">= from 23</span></span></td></tr><tr><td class="kw">Ssc Cgl Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Ssc Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval mid">9</span><span class="delta flat">= from 9</span></span></td></tr><tr><td class="kw">Clat Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Cuet Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval good">5</span><span class="delta up">&#9650; from 8</span></span></td></tr><tr><td class="kw">Kptcl Coaching Classes</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Kptcl Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval mid">6</span><span class="delta up">&#9650; from 11</span></span></td></tr><tr><td class="kw">Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval mid">13</span><span class="delta up">&#9650; from 16</span></span></td></tr><tr><td class="kw">Coaching Centre</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr></tbody></table>
+</div>
+</section>
+<section class="slide" data-section="GBP Review" data-slide="16">
+<div class="slide-inner">
+<div class="eyebrow"><i class="ti ti-map-pin"></i> GBP &middot; Malleshwaram</div>
+<h2 class="title">Malleshwaram</h2>
+<span class="track-badge underperform"><i class="ti ti-trending-down"></i>Mixed — SEO slipping</span>
+<p class="lede">Best GBP branch by far, but its SEO position fell hard this period — driven almost entirely by Sainik and CUET.</p>
+<div class="stat-trio">
+<div class="stat-block"><div class="big">3.6 &rarr; 3.5</div><div class="lbl">Average rank</div></div>
+<div class="stat-block"><div class="big">13</div><div class="lbl">Not ranking</div></div>
+<div class="stat-block"><div class="big">16</div><div class="lbl">In the top 5</div></div>
+</div>
+<div class="grid-2">
+<div class="card-outline"><h3><i class="ti ti-arrow-up-right"></i>Improved</h3><table class="mini-table"><tr><th>Improved</th><th>Start &rarr; Sep 3</th></tr><tr><td><i class="ti ti-arrow-up" style="color:var(--green);"></i> 12Th Commerce Coaching Classes</td><td class="num-cell">9 &rarr; 2</td></tr><tr><td><i class="ti ti-arrow-up" style="color:var(--green);"></i> School Tuition</td><td class="num-cell">5 &rarr; 3</td></tr><tr><td><i class="ti ti-arrow-up" style="color:var(--green);"></i> Ncert School Tuition</td><td class="num-cell">3 &rarr; 2</td></tr><tr><td><i class="ti ti-arrow-up" style="color:var(--green);"></i> Igcse Tuition</td><td class="num-cell">5 &rarr; 4</td></tr><tr><td><i class="ti ti-arrow-up" style="color:var(--green);"></i> Ssc Coaching</td><td class="num-cell">4 &rarr; 3</td></tr></table></div>
+<div class="card-outline"><h3><i class="ti ti-arrow-down-right"></i>Declined</h3><table class="mini-table"><tr><th>Declined</th><th>Start &rarr; Sep 3</th></tr><tr><td><i class="ti ti-arrow-down" style="color:var(--red);"></i> Banking Coaching</td><td class="num-cell">3 &rarr; 7</td></tr><tr><td><i class="ti ti-arrow-down" style="color:var(--red);"></i> Ibps Coaching</td><td class="num-cell">5 &rarr; 7</td></tr><tr><td><i class="ti ti-arrow-down" style="color:var(--red);"></i> Icse School Tuition</td><td class="num-cell">9 &rarr; 11</td></tr><tr><td><i class="ti ti-arrow-down" style="color:var(--red);"></i> Sainik School Tuition</td><td class="num-cell">1 &rarr; 3</td></tr><tr><td><i class="ti ti-arrow-down" style="color:var(--red);"></i> Coaching</td><td class="num-cell">1 &rarr; 2</td></tr><tr><td><i class="ti ti-arrow-down" style="color:var(--red);"></i> Cuet Coaching</td><td class="num-cell">1 &rarr; 2</td></tr></table></div>
+</div>
+</div>
+</section>
+<section class="slide" data-section="GBP Review" data-slide="17">
+<div class="slide-inner">
+<div class="eyebrow"><i class="ti ti-list-numbers"></i> GBP &middot; Malleshwaram &middot; Full rankings</div>
+<h2 class="title">Malleshwaram &mdash; all tracked keywords</h2>
+<p class="lede">Every keyword checked for this branch, start of tracking vs. 3 September.</p>
+<table class="rank-table"><tbody><tr><td class="kw">Neet Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval good">1</span><span class="delta flat">= from 1</span></span></td></tr><tr><td class="kw">Navodaya Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval good">3</span><span class="delta flat">= from 3</span></span></td></tr><tr><td class="kw">Sainik School Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Sainik School Tuition</td><td class="branch-col"><span class="rankpill"><span class="rankval good">3</span><span class="delta down">&#9660; from 1</span></span></td></tr><tr><td class="kw">Sainik Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Rms Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval good">4</span><span class="delta down">&#9660; from 3</span></span></td></tr><tr><td class="kw">School Tuition</td><td class="branch-col"><span class="rankpill"><span class="rankval good">3</span><span class="delta up">&#9650; from 5</span></span></td></tr><tr><td class="kw">Ncert School Tuition</td><td class="branch-col"><span class="rankpill"><span class="rankval good">2</span><span class="delta up">&#9650; from 3</span></span></td></tr><tr><td class="kw">Cbse Tuition</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Cbse School Tuition</td><td class="branch-col"><span class="rankpill"><span class="rankval good">5</span><span class="delta flat">= from 5</span></span></td></tr><tr><td class="kw">Icse School Tuition</td><td class="branch-col"><span class="rankpill"><span class="rankval mid">11</span><span class="delta down">&#9660; from 9</span></span></td></tr><tr><td class="kw">Igcse Tuition</td><td class="branch-col"><span class="rankpill"><span class="rankval good">4</span><span class="delta up">&#9650; from 5</span></span></td></tr><tr><td class="kw">12Th Science Tuition</td><td class="branch-col"><span class="rankpill"><span class="rankval good">2</span><span class="delta flat">= from 2</span></span></td></tr><tr><td class="kw">12Th Commerce Tuition</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">12Th Commerce Coaching Classes</td><td class="branch-col"><span class="rankpill"><span class="rankval good">2</span><span class="delta up">&#9650; from 9</span></span></td></tr><tr><td class="kw">Cet Coaching Centres</td><td class="branch-col"><span class="rankpill"><span class="rankval good">1</span><span class="delta flat">= from 1</span></span></td></tr><tr><td class="kw">Cet Coaching Classes</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Cet Coaching Centre</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Iit Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval good">1</span><span class="delta flat">= from 1</span></span></td></tr><tr><td class="kw">Ca Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Cs Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval mid">7</span><span class="delta flat">= from 7</span></span></td></tr><tr><td class="kw">Cma Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Cma Coaching Centre</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Ibps Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval mid">7</span><span class="delta down">&#9660; from 5</span></span></td></tr><tr><td class="kw">Banking Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval mid">7</span><span class="delta down">&#9660; from 3</span></span></td></tr><tr><td class="kw">Ssc Cgl Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Ssc Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval good">3</span><span class="delta up">&#9650; from 4</span></span></td></tr><tr><td class="kw">Clat Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Cuet Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval good">2</span><span class="delta down">&#9660; from 1</span></span></td></tr><tr><td class="kw">Kptcl Coaching Classes</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Kptcl Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval good">1</span><span class="delta new">NEW</span></span></td></tr><tr><td class="kw">Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval good">2</span><span class="delta down">&#9660; from 1</span></span></td></tr><tr><td class="kw">Coaching Centre</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr></tbody></table>
+</div>
+</section>
+<section class="slide" data-section="GBP Review Roadmap" data-slide="18">
+<div class="slide-inner"><div class="eyebrow"><i class="ti ti-calendar-time"></i> GBP roadmap</div><h2 class="title">Roadmap &mdash; priorities from this data</h2><p class="lede">Ordered by where the numbers show the most leverage.</p><div class="grid-2"><div class="card-outline"><h3 style="font-size:14px;"><span class="agenda-num" style="width:auto; margin-right:6px;">01</span>Fix Jayanagar's GBP listing signals</h3><p style="font-size:12.5px; color:var(--text-dim);">Lowest average rank and fewest top-5 keywords of any branch — review categories, photos, and review velocity for the Jayanagar profile specifically.</p></div><div class="card-outline"><h3 style="font-size:14px;"><span class="agenda-num" style="width:auto; margin-right:6px;">02</span>Recover Yelahanka's Navodaya/Sainik listings</h3><p style="font-size:12.5px; color:var(--text-dim);">Both fell meaningfully this period (17&rarr;23 and 3&rarr;7) while the rest of the branch held steady — check for a duplicate or suspended competitor listing outranking us.</p></div><div class="card-outline"><h3 style="font-size:14px;"><span class="agenda-num" style="width:auto; margin-right:6px;">03</span>Protect Malleshwaram's lead</h3><p style="font-size:12.5px; color:var(--text-dim);">It's the best-performing GBP branch — keep posting cadence and review responses consistent so this doesn't slip the way its SEO did.</p></div><div class="card-outline"><h3 style="font-size:14px;"><span class="agenda-num" style="width:auto; margin-right:6px;">04</span>Close the School Tuition GBP gap</h3><p style="font-size:12.5px; color:var(--text-dim);">16 of 45 School Tuition branch/keyword cells are still unranked on GBP — services-section and category tagging work here is lower-effort than SEO content and can move faster.</p></div></div></div>
+</section>
+<section class="slide" data-section="GBP Review Roadmap" data-slide="19">
+<div class="slide-inner">
+<div class="eyebrow"><i class="ti ti-flag-check"></i> GBP success metrics</div>
+<h2 class="title">Next check-in</h2>
+<p class="lede">What "improvement" needs to look like when this is compared again.</p>
+<div class="card-outline"><ul><li>Jayanagar's average GBP rank moving down from 11.3</li><li>Yelahanka's Navodaya and Sainik listings back near their earlier ranks</li><li>Malleshwaram holding its lead (not regressing the way SEO did)</li><li>School Tuition unranked-cell count down from 16 of 45</li></ul></div>
+</div>
+</section>
+<section class="slide" data-section="SEO Review" data-slide="20">
+<div class="slide-inner">
+<div class="part-divider"><span class="pd-badge">PART 2</span><span class="pd-line"></span></div>
+<div class="eyebrow"><i class="ti ti-search"></i> Organic Website Rankings</div>
+<h2 class="title">SEO Strategy — September Update</h2>
+<p class="lede">7 July to 3 September 2026, organic search rankings across all 4 branches plus Bangalore-wide.</p>
+<div class="stat-trio-4"><div class="stat-block" style="border-color:var(--green);"><div class="big" style="color:var(--green);">2.3</div><div class="lbl">Koramangala avg</div></div><div class="stat-block" style="border-color:var(--green);"><div class="big" style="color:var(--green);">2.9</div><div class="lbl">Yelahanka avg</div></div><div class="stat-block" style="border-color:var(--amber);"><div class="big" style="color:var(--amber);">7.6</div><div class="lbl">Jayanagar avg</div></div><div class="stat-block" style="border-color:var(--red);"><div class="big" style="color:var(--red);">10.9</div><div class="lbl">Malleshwaram avg</div></div></div>
+</div>
+</section>
+<section class="slide" data-section="SEO Review" data-slide="21">
+<div class="slide-inner">
+<div class="eyebrow"><i class="ti ti-heartbeat"></i> SEO &middot; NEET</div>
+<h2 class="title">NEET</h2>
+<p class="lede">Medical entrance exam prep &middot; K/Y/J/M/B = branch , B = Bangalore-wide</p>
+<table class="rank-table"><tr><th>Keyword</th><th class="branch-col">Koramangala</th><th class="branch-col">Yelahanka</th><th class="branch-col">Jayanagar</th><th class="branch-col">Malleshwaram</th><th class="branch-col">Blr</th></tr><tr><td class="kw">Neet Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval good">3</span><span class="delta up">&#9650; from 4</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval good">4</span><span class="delta up">&#9650; from 6</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval good">3</span><span class="delta up">&#9650; from 5</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval good">1</span><span class="delta up">&#9650; from 3</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval mid">12</span><span class="delta up">&#9650; from 14</span></span></td></tr></table>
+<div class="legend-row">
+<div class="li"><span class="delta up">&#9650; from N</span> improved</div>
+<div class="li"><span class="delta down">&#9660; from N</span> worsened</div>
+<div class="li"><span class="delta new">NEW</span> wasn't ranking before</div>
+<div class="li"><span class="delta lost">LOST</span> was ranking, isn't now</div>
+</div>
+</div>
+</section>
+<section class="slide" data-section="SEO Review" data-slide="22">
+<div class="slide-inner">
+<div class="eyebrow"><i class="ti ti-shield-star"></i> SEO &middot; Navodaya / Sainik / RMS</div>
+<h2 class="title">Navodaya / Sainik / RMS</h2>
+<p class="lede">Defense & residential school entrance prep &middot; K/Y/J/M/B = branch , B = Bangalore-wide</p>
+<table class="rank-table"><tr><th>Keyword</th><th class="branch-col">Koramangala</th><th class="branch-col">Yelahanka</th><th class="branch-col">Jayanagar</th><th class="branch-col">Malleshwaram</th><th class="branch-col">Blr</th></tr><tr><td class="kw">Navodaya Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval good">2</span><span class="delta up">&#9650; from 3</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval good">4</span><span class="delta flat">= from 4</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval good">3</span><span class="delta up">&#9650; from 4</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval good">3</span><span class="delta up">&#9650; from 12</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval good">1</span><span class="delta up">&#9650; from 2</span></span></td></tr><tr><td class="kw">Sainik School Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval mid">6</span><span class="delta new">NEW</span></span></td></tr><tr><td class="kw">Sainik Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval good">5</span><span class="delta up">&#9650; from 6</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval good">4</span><span class="delta up">&#9650; from 7</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval good">5</span><span class="delta flat">= from 5</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval bad">16</span><span class="delta down">&#9660; from 5</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Rms Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval good">1</span><span class="delta new">NEW</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval good">1</span><span class="delta up">&#9650; from 3</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval good">2</span><span class="delta up">&#9650; from 4</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval good">2</span><span class="delta up">&#9650; from 4</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval mid">6</span><span class="delta new">NEW</span></span></td></tr></table>
+<div class="legend-row">
+<div class="li"><span class="delta up">&#9650; from N</span> improved</div>
+<div class="li"><span class="delta down">&#9660; from N</span> worsened</div>
+<div class="li"><span class="delta new">NEW</span> wasn't ranking before</div>
+<div class="li"><span class="delta lost">LOST</span> was ranking, isn't now</div>
+</div>
+</div>
+</section>
+<section class="slide" data-section="SEO Review" data-slide="23">
+<div class="slide-inner">
+<div class="eyebrow"><i class="ti ti-school"></i> SEO &middot; School Tuition</div>
+<h2 class="title">School Tuition</h2>
+<p class="lede">CBSE/ICSE/IGCSE/NCERT & 12th science/commerce tuition &middot; K/Y/J/M/B = branch , B = Bangalore-wide</p>
+<table class="rank-table"><tr><th>Keyword</th><th class="branch-col">Koramangala</th><th class="branch-col">Yelahanka</th><th class="branch-col">Jayanagar</th><th class="branch-col">Malleshwaram</th><th class="branch-col">Blr</th></tr><tr><td class="kw">School Tuition</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Ncert School Tuition</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Cbse Tuition</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Cbse School Tuition</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Icse School Tuition</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Igcse Tuition</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval bad">36</span><span class="delta new">NEW</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">12Th Science Coaching Classes</td><td class="branch-col"><span class="rankpill"><span class="rankval good">3</span><span class="delta flat">= from 3</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval bad">42</span><span class="delta new">NEW</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span><span class="delta lost">LOST</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">12Th Commerce Coaching Classes</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span><span class="delta lost">LOST</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval good">3</span><span class="delta up">&#9650; from 4</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval bad">42</span><span class="delta new">NEW</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval good">2</span><span class="delta new">NEW</span></span></td></tr></table>
+<div class="legend-row">
+<div class="li"><span class="delta up">&#9650; from N</span> improved</div>
+<div class="li"><span class="delta down">&#9660; from N</span> worsened</div>
+<div class="li"><span class="delta new">NEW</span> wasn't ranking before</div>
+<div class="li"><span class="delta lost">LOST</span> was ranking, isn't now</div>
+</div>
+</div>
+</section>
+<section class="slide" data-section="SEO Review" data-slide="24">
+<div class="slide-inner">
+<div class="eyebrow"><i class="ti ti-certificate"></i> SEO &middot; Competitive & Professional Exams</div>
+<h2 class="title">Competitive & Professional Exams</h2>
+<p class="lede">CA/CS/CMA/IBPS/Banking/SSC/CLAT/CUET/KPTCL/CET/IIT &middot; K/Y/J/M/B = branch , B = Bangalore-wide</p>
+<table class="rank-table"><tr><th>Keyword</th><th class="branch-col">Koramangala</th><th class="branch-col">Yelahanka</th><th class="branch-col">Jayanagar</th><th class="branch-col">Malleshwaram</th><th class="branch-col">Blr</th></tr><tr><td class="kw">Cet Coaching Centres</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval good">2</span><span class="delta flat">= from 2</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval good">2</span><span class="delta up">&#9650; from 3</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval good">3</span><span class="delta flat">= from 3</span></span></td></tr><tr><td class="kw">Cet Coaching Classes</td><td class="branch-col"><span class="rankpill"><span class="rankval good">3</span><span class="delta up">&#9650; from 5</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Cet Coaching Centre</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval good">3</span><span class="delta down">&#9660; from 2</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Iit Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval good">1</span><span class="delta flat">= from 1</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval good">1</span><span class="delta flat">= from 1</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval good">1</span><span class="delta flat">= from 1</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval good">1</span><span class="delta flat">= from 1</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval good">1</span><span class="delta flat">= from 1</span></span></td></tr><tr><td class="kw">Ca Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval good">3</span><span class="delta up">&#9650; from 5</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval good">2</span><span class="delta flat">= from 2</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval bad">23</span><span class="delta down">&#9660; from 4</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval bad">31</span><span class="delta new">NEW</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval mid">7</span><span class="delta up">&#9650; from 12</span></span></td></tr><tr><td class="kw">Cs Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval good">2</span><span class="delta flat">= from 2</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span><span class="delta lost">LOST</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval good">5</span><span class="delta down">&#9660; from 4</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval good">4</span><span class="delta up">&#9650; from 5</span></span></td></tr><tr><td class="kw">Cma Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval good">4</span><span class="delta up">&#9650; from 6</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Cma Coaching Centre</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval good">3</span><span class="delta up">&#9650; from 4</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval good">5</span><span class="delta down">&#9660; from 3</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Ibps Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval good">1</span><span class="delta up">&#9650; from 2</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval good">2</span><span class="delta flat">= from 2</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval good">2</span><span class="delta flat">= from 2</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval good">5</span><span class="delta down">&#9660; from 3</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval good">1</span><span class="delta flat">= from 1</span></span></td></tr><tr><td class="kw">Banking Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval good">3</span><span class="delta flat">= from 3</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval mid">7</span><span class="delta down">&#9660; from 5</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval good">2</span><span class="delta up">&#9650; from 28</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval good">3</span><span class="delta flat">= from 3</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval good">4</span><span class="delta up">&#9650; from 7</span></span></td></tr><tr><td class="kw">Ssc Cgl Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval good">1</span><span class="delta new">NEW</span></span></td></tr><tr><td class="kw">Ssc Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval good">2</span><span class="delta up">&#9650; from 3</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval good">2</span><span class="delta up">&#9650; from 3</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval good">2</span><span class="delta up">&#9650; from 3</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval good">2</span><span class="delta up">&#9650; from 4</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval good">3</span><span class="delta down">&#9660; from 1</span></span></td></tr><tr><td class="kw">Clat Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Cuet Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval good">4</span><span class="delta up">&#9650; from 12</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval bad">20</span><span class="delta down">&#9660; from 19</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval mid">15</span><span class="delta down">&#9660; from 5</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Kptcl Coaching Classes</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Kptcl Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span><span class="delta lost">LOST</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span><span class="delta lost">LOST</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr></table>
+<div class="legend-row">
+<div class="li"><span class="delta up">&#9650; from N</span> improved</div>
+<div class="li"><span class="delta down">&#9660; from N</span> worsened</div>
+<div class="li"><span class="delta new">NEW</span> wasn't ranking before</div>
+<div class="li"><span class="delta lost">LOST</span> was ranking, isn't now</div>
+</div>
+</div>
+</section>
+<section class="slide" data-section="SEO Review" data-slide="25">
+<div class="slide-inner">
+<div class="eyebrow"><i class="ti ti-building-community"></i> SEO &middot; General Coaching</div>
+<h2 class="title">General Coaching</h2>
+<p class="lede">Branch-level generic coaching queries &middot; K/Y/J/M/B = branch , B = Bangalore-wide</p>
+<table class="rank-table"><tr><th>Keyword</th><th class="branch-col">Koramangala</th><th class="branch-col">Yelahanka</th><th class="branch-col">Jayanagar</th><th class="branch-col">Malleshwaram</th><th class="branch-col">Blr</th></tr><tr><td class="kw">Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval good">1</span><span class="delta up">&#9650; from 5</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval good">2</span><span class="delta up">&#9650; from 6</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval good">1</span><span class="delta up">&#9650; from 4</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval good">1</span><span class="delta up">&#9650; from 2</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Coaching Centre</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td><td class="branch-col"><span class="rankpill"><span class="rankval good">2</span><span class="delta up">&#9650; from 5</span></span></td></tr></table>
+<div class="legend-row">
+<div class="li"><span class="delta up">&#9650; from N</span> improved</div>
+<div class="li"><span class="delta down">&#9660; from N</span> worsened</div>
+<div class="li"><span class="delta new">NEW</span> wasn't ranking before</div>
+<div class="li"><span class="delta lost">LOST</span> was ranking, isn't now</div>
+</div>
+</div>
+</section>
+<section class="slide" data-section="SEO Review" data-slide="26">
+<div class="slide-inner">
+<div class="part-divider"><span class="pd-badge">PART 2</span><span class="pd-line"></span></div>
+<div class="eyebrow"><i class="ti ti-bulb"></i> Three things this quarter's organic data shows</div>
+<h2 class="title">SEO Insights</h2>
+<div class="callout red">
+<i class="ti ti-file-off"></i>
+<div><b>School Tuition is still, overwhelmingly, a missing-page problem:</b> 34 of 40 branch/keyword cells are N/A on 3 September. The pages largely don't exist yet, so there's nothing to outrank.</div>
+</div>
+<div class="callout amber">
+<i class="ti ti-alert-triangle"></i>
+<div><b>Malleshwaram is the only branch that got worse on average</b> (4.2 &rarr; 10.9), concentrated almost entirely in two keywords &mdash; Sainik Coaching (5&rarr;16) and CUET Coaching (5&rarr;15) &mdash; while the rest of the branch held or improved.</div>
+</div>
+<div class="callout blue">
+<i class="ti ti-git-compare"></i>
+<div><b>Jayanagar's CA gap shows up on both channels at once:</b> organic collapsed (4&rarr;23) while its GBP listing for CA coaching has been unranked the whole period. A gap on both channels for the same branch/keyword usually points to a content problem, not a competitive one.</div>
+</div>
+</div>
+</section>
+<section class="slide" data-section="SEO Review" data-slide="27">
+<div class="slide-inner">
+<div class="eyebrow"><i class="ti ti-map-pin"></i> SEO &middot; Koramangala</div>
+<h2 class="title">Koramangala</h2>
+<span class="track-badge perform"><i class="ti ti-trending-up"></i>Performing</span>
+<p class="lede">Strong and improving across the board — the branch to point to when this deck needs a proof point.</p>
+<div class="stat-trio">
+<div class="stat-block"><div class="big">3.5 &rarr; 2.3</div><div class="lbl">Average rank</div></div>
+<div class="stat-block"><div class="big">18</div><div class="lbl">Not ranking</div></div>
+<div class="stat-block"><div class="big">13</div><div class="lbl">In the top 5</div></div>
+</div>
+<div class="grid-2">
+<div class="card-outline"><h3><i class="ti ti-arrow-up-right"></i>Improved</h3><table class="mini-table"><tr><th>Improved</th><th>Start &rarr; Sep 3</th></tr><tr><td><i class="ti ti-arrow-up" style="color:var(--green);"></i> Coaching</td><td class="num-cell">5 &rarr; 1</td></tr><tr><td><i class="ti ti-arrow-up" style="color:var(--green);"></i> Cet Coaching Classes</td><td class="num-cell">5 &rarr; 3</td></tr><tr><td><i class="ti ti-arrow-up" style="color:var(--green);"></i> Ca Coaching</td><td class="num-cell">5 &rarr; 3</td></tr><tr><td><i class="ti ti-arrow-up" style="color:var(--green);"></i> Neet Coaching</td><td class="num-cell">4 &rarr; 3</td></tr><tr><td><i class="ti ti-arrow-up" style="color:var(--green);"></i> Navodaya Coaching</td><td class="num-cell">3 &rarr; 2</td></tr><tr><td><i class="ti ti-arrow-up" style="color:var(--green);"></i> Sainik Coaching</td><td class="num-cell">6 &rarr; 5</td></tr></table></div>
+<div class="card-outline"><h3><i class="ti ti-arrow-down-right"></i>Declined</h3><p style="font-size:12px; color:var(--text-dim); font-style:italic;">No declined this period.</p></div>
+</div>
+</div>
+</section>
+<section class="slide" data-section="SEO Review" data-slide="28">
+<div class="slide-inner">
+<div class="eyebrow"><i class="ti ti-list-numbers"></i> SEO &middot; Koramangala &middot; Full rankings</div>
+<h2 class="title">Koramangala &mdash; all tracked keywords</h2>
+<p class="lede">Every keyword checked for this branch, start of tracking vs. 3 September.</p>
+<table class="rank-table"><tbody><tr><td class="kw">Neet Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval good">3</span><span class="delta up">&#9650; from 4</span></span></td></tr><tr><td class="kw">Navodaya Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval good">2</span><span class="delta up">&#9650; from 3</span></span></td></tr><tr><td class="kw">Sainik School Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Sainik Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval good">5</span><span class="delta up">&#9650; from 6</span></span></td></tr><tr><td class="kw">Rms Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval good">1</span><span class="delta new">NEW</span></span></td></tr><tr><td class="kw">School Tuition</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Ncert School Tuition</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Cbse Tuition</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Cbse School Tuition</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Icse School Tuition</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Igcse Tuition</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">12Th Science Coaching Classes</td><td class="branch-col"><span class="rankpill"><span class="rankval good">3</span><span class="delta flat">= from 3</span></span></td></tr><tr><td class="kw">12Th Commerce Coaching Classes</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Cet Coaching Centres</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Cet Coaching Classes</td><td class="branch-col"><span class="rankpill"><span class="rankval good">3</span><span class="delta up">&#9650; from 5</span></span></td></tr><tr><td class="kw">Cet Coaching Centre</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Iit Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval good">1</span><span class="delta flat">= from 1</span></span></td></tr><tr><td class="kw">Ca Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval good">3</span><span class="delta up">&#9650; from 5</span></span></td></tr><tr><td class="kw">Cs Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval good">2</span><span class="delta flat">= from 2</span></span></td></tr><tr><td class="kw">Cma Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Cma Coaching Centre</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Ibps Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval good">1</span><span class="delta up">&#9650; from 2</span></span></td></tr><tr><td class="kw">Banking Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval good">3</span><span class="delta flat">= from 3</span></span></td></tr><tr><td class="kw">Ssc Cgl Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Ssc Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval good">2</span><span class="delta up">&#9650; from 3</span></span></td></tr><tr><td class="kw">Clat Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Cuet Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Kptcl Coaching Classes</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Kptcl Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval good">1</span><span class="delta up">&#9650; from 5</span></span></td></tr><tr><td class="kw">Coaching Centre</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr></tbody></table>
+</div>
+</section>
+<section class="slide" data-section="SEO Review" data-slide="29">
+<div class="slide-inner">
+<div class="eyebrow"><i class="ti ti-map-pin"></i> SEO &middot; Yelahanka</div>
+<h2 class="title">Yelahanka</h2>
+<span class="track-badge perform"><i class="ti ti-trending-up"></i>Performing</span>
+<p class="lede">Solid and mostly improving on SEO; GBP has drifted slightly worse and is worth a light check-in.</p>
+<div class="stat-trio">
+<div class="stat-block"><div class="big">4.4 &rarr; 2.9</div><div class="lbl">Average rank</div></div>
+<div class="stat-block"><div class="big">18</div><div class="lbl">Not ranking</div></div>
+<div class="stat-block"><div class="big">12</div><div class="lbl">In the top 5</div></div>
+</div>
+<div class="grid-2">
+<div class="card-outline"><h3><i class="ti ti-arrow-up-right"></i>Improved</h3><table class="mini-table"><tr><th>Improved</th><th>Start &rarr; Sep 3</th></tr><tr><td><i class="ti ti-arrow-up" style="color:var(--green);"></i> Cuet Coaching</td><td class="num-cell">12 &rarr; 4</td></tr><tr><td><i class="ti ti-arrow-up" style="color:var(--green);"></i> Coaching</td><td class="num-cell">6 &rarr; 2</td></tr><tr><td><i class="ti ti-arrow-up" style="color:var(--green);"></i> Sainik Coaching</td><td class="num-cell">7 &rarr; 4</td></tr><tr><td><i class="ti ti-arrow-up" style="color:var(--green);"></i> Neet Coaching</td><td class="num-cell">6 &rarr; 4</td></tr><tr><td><i class="ti ti-arrow-up" style="color:var(--green);"></i> Rms Coaching</td><td class="num-cell">3 &rarr; 1</td></tr><tr><td><i class="ti ti-arrow-up" style="color:var(--green);"></i> Cma Coaching Centre</td><td class="num-cell">4 &rarr; 3</td></tr></table></div>
+<div class="card-outline"><h3><i class="ti ti-arrow-down-right"></i>Declined</h3><table class="mini-table"><tr><th>Declined</th><th>Start &rarr; Sep 3</th></tr><tr><td><i class="ti ti-arrow-down" style="color:var(--red);"></i> Banking Coaching</td><td class="num-cell">5 &rarr; 7</td></tr></table></div>
+</div>
+</div>
+</section>
+<section class="slide" data-section="SEO Review" data-slide="30">
+<div class="slide-inner">
+<div class="eyebrow"><i class="ti ti-list-numbers"></i> SEO &middot; Yelahanka &middot; Full rankings</div>
+<h2 class="title">Yelahanka &mdash; all tracked keywords</h2>
+<p class="lede">Every keyword checked for this branch, start of tracking vs. 3 September.</p>
+<table class="rank-table"><tbody><tr><td class="kw">Neet Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval good">4</span><span class="delta up">&#9650; from 6</span></span></td></tr><tr><td class="kw">Navodaya Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval good">4</span><span class="delta flat">= from 4</span></span></td></tr><tr><td class="kw">Sainik School Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Sainik Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval good">4</span><span class="delta up">&#9650; from 7</span></span></td></tr><tr><td class="kw">Rms Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval good">1</span><span class="delta up">&#9650; from 3</span></span></td></tr><tr><td class="kw">School Tuition</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Ncert School Tuition</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Cbse Tuition</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Cbse School Tuition</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Icse School Tuition</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Igcse Tuition</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">12Th Science Coaching Classes</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">12Th Commerce Coaching Classes</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span><span class="delta lost">LOST</span></span></td></tr><tr><td class="kw">Cet Coaching Centres</td><td class="branch-col"><span class="rankpill"><span class="rankval good">2</span><span class="delta flat">= from 2</span></span></td></tr><tr><td class="kw">Cet Coaching Classes</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Cet Coaching Centre</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Iit Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval good">1</span><span class="delta flat">= from 1</span></span></td></tr><tr><td class="kw">Ca Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval good">2</span><span class="delta flat">= from 2</span></span></td></tr><tr><td class="kw">Cs Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span><span class="delta lost">LOST</span></span></td></tr><tr><td class="kw">Cma Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Cma Coaching Centre</td><td class="branch-col"><span class="rankpill"><span class="rankval good">3</span><span class="delta up">&#9650; from 4</span></span></td></tr><tr><td class="kw">Ibps Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval good">2</span><span class="delta flat">= from 2</span></span></td></tr><tr><td class="kw">Banking Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval mid">7</span><span class="delta down">&#9660; from 5</span></span></td></tr><tr><td class="kw">Ssc Cgl Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Ssc Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval good">2</span><span class="delta up">&#9650; from 3</span></span></td></tr><tr><td class="kw">Clat Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Cuet Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval good">4</span><span class="delta up">&#9650; from 12</span></span></td></tr><tr><td class="kw">Kptcl Coaching Classes</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Kptcl Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span><span class="delta lost">LOST</span></span></td></tr><tr><td class="kw">Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval good">2</span><span class="delta up">&#9650; from 6</span></span></td></tr><tr><td class="kw">Coaching Centre</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr></tbody></table>
+</div>
+</section>
+<section class="slide" data-section="SEO Review" data-slide="31">
+<div class="slide-inner">
+<div class="eyebrow"><i class="ti ti-map-pin"></i> SEO &middot; Jayanagar</div>
+<h2 class="title">Jayanagar</h2>
+<span class="track-badge underperform"><i class="ti ti-trending-down"></i>Underperforming</span>
+<p class="lede">The weakest branch on both channels — worsening on GBP and drifting on SEO, concentrated in CA and a few competitive-exam terms.</p>
+<div class="stat-trio">
+<div class="stat-block"><div class="big">6.1 &rarr; 7.6</div><div class="lbl">Average rank</div></div>
+<div class="stat-block"><div class="big">15</div><div class="lbl">Not ranking</div></div>
+<div class="stat-block"><div class="big">13</div><div class="lbl">In the top 5</div></div>
+</div>
+<div class="grid-2">
+<div class="card-outline"><h3><i class="ti ti-arrow-up-right"></i>Improved</h3><table class="mini-table"><tr><th>Improved</th><th>Start &rarr; Sep 3</th></tr><tr><td><i class="ti ti-arrow-up" style="color:var(--green);"></i> Banking Coaching</td><td class="num-cell">28 &rarr; 2</td></tr><tr><td><i class="ti ti-arrow-up" style="color:var(--green);"></i> Coaching</td><td class="num-cell">4 &rarr; 1</td></tr><tr><td><i class="ti ti-arrow-up" style="color:var(--green);"></i> Neet Coaching</td><td class="num-cell">5 &rarr; 3</td></tr><tr><td><i class="ti ti-arrow-up" style="color:var(--green);"></i> Rms Coaching</td><td class="num-cell">4 &rarr; 2</td></tr><tr><td><i class="ti ti-arrow-up" style="color:var(--green);"></i> Navodaya Coaching</td><td class="num-cell">4 &rarr; 3</td></tr><tr><td><i class="ti ti-arrow-up" style="color:var(--green);"></i> 12Th Commerce Coaching Classes</td><td class="num-cell">4 &rarr; 3</td></tr></table></div>
+<div class="card-outline"><h3><i class="ti ti-arrow-down-right"></i>Declined</h3><table class="mini-table"><tr><th>Declined</th><th>Start &rarr; Sep 3</th></tr><tr><td><i class="ti ti-arrow-down" style="color:var(--red);"></i> Ca Coaching</td><td class="num-cell">4 &rarr; 23</td></tr><tr><td><i class="ti ti-arrow-down" style="color:var(--red);"></i> Cma Coaching Centre</td><td class="num-cell">3 &rarr; 5</td></tr><tr><td><i class="ti ti-arrow-down" style="color:var(--red);"></i> Cuet Coaching</td><td class="num-cell">19 &rarr; 20</td></tr><tr><td><i class="ti ti-arrow-down" style="color:var(--red);"></i> Cs Coaching</td><td class="num-cell">4 &rarr; 5</td></tr><tr><td><i class="ti ti-arrow-down" style="color:var(--red);"></i> Cet Coaching Centre</td><td class="num-cell">2 &rarr; 3</td></tr></table></div>
+</div>
+</div>
+</section>
+<section class="slide" data-section="SEO Review" data-slide="32">
+<div class="slide-inner">
+<div class="eyebrow"><i class="ti ti-list-numbers"></i> SEO &middot; Jayanagar &middot; Full rankings</div>
+<h2 class="title">Jayanagar &mdash; all tracked keywords</h2>
+<p class="lede">Every keyword checked for this branch, start of tracking vs. 3 September.</p>
+<table class="rank-table"><tbody><tr><td class="kw">Neet Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval good">3</span><span class="delta up">&#9650; from 5</span></span></td></tr><tr><td class="kw">Navodaya Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval good">3</span><span class="delta up">&#9650; from 4</span></span></td></tr><tr><td class="kw">Sainik School Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Sainik Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval good">5</span><span class="delta flat">= from 5</span></span></td></tr><tr><td class="kw">Rms Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval good">2</span><span class="delta up">&#9650; from 4</span></span></td></tr><tr><td class="kw">School Tuition</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Ncert School Tuition</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Cbse Tuition</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Cbse School Tuition</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Icse School Tuition</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Igcse Tuition</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">12Th Science Coaching Classes</td><td class="branch-col"><span class="rankpill"><span class="rankval bad">42</span><span class="delta new">NEW</span></span></td></tr><tr><td class="kw">12Th Commerce Coaching Classes</td><td class="branch-col"><span class="rankpill"><span class="rankval good">3</span><span class="delta up">&#9650; from 4</span></span></td></tr><tr><td class="kw">Cet Coaching Centres</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Cet Coaching Classes</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Cet Coaching Centre</td><td class="branch-col"><span class="rankpill"><span class="rankval good">3</span><span class="delta down">&#9660; from 2</span></span></td></tr><tr><td class="kw">Iit Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval good">1</span><span class="delta flat">= from 1</span></span></td></tr><tr><td class="kw">Ca Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval bad">23</span><span class="delta down">&#9660; from 4</span></span></td></tr><tr><td class="kw">Cs Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval good">5</span><span class="delta down">&#9660; from 4</span></span></td></tr><tr><td class="kw">Cma Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Cma Coaching Centre</td><td class="branch-col"><span class="rankpill"><span class="rankval good">5</span><span class="delta down">&#9660; from 3</span></span></td></tr><tr><td class="kw">Ibps Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval good">2</span><span class="delta flat">= from 2</span></span></td></tr><tr><td class="kw">Banking Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval good">2</span><span class="delta up">&#9650; from 28</span></span></td></tr><tr><td class="kw">Ssc Cgl Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Ssc Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval good">2</span><span class="delta up">&#9650; from 3</span></span></td></tr><tr><td class="kw">Clat Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Cuet Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval bad">20</span><span class="delta down">&#9660; from 19</span></span></td></tr><tr><td class="kw">Kptcl Coaching Classes</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Kptcl Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span><span class="delta lost">LOST</span></span></td></tr><tr><td class="kw">Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval good">1</span><span class="delta up">&#9650; from 4</span></span></td></tr><tr><td class="kw">Coaching Centre</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr></tbody></table>
+</div>
+</section>
+<section class="slide" data-section="SEO Review" data-slide="33">
+<div class="slide-inner">
+<div class="eyebrow"><i class="ti ti-map-pin"></i> SEO &middot; Malleshwaram</div>
+<h2 class="title">Malleshwaram</h2>
+<span class="track-badge underperform"><i class="ti ti-trending-down"></i>Mixed — SEO slipping</span>
+<p class="lede">Best GBP branch by far, but its SEO position fell hard this period — driven almost entirely by Sainik and CUET.</p>
+<div class="stat-trio">
+<div class="stat-block"><div class="big">4.2 &rarr; 10.9</div><div class="lbl">Average rank</div></div>
+<div class="stat-block"><div class="big">16</div><div class="lbl">Not ranking</div></div>
+<div class="stat-block"><div class="big">10</div><div class="lbl">In the top 5</div></div>
+</div>
+<div class="grid-2">
+<div class="card-outline"><h3><i class="ti ti-arrow-up-right"></i>Improved</h3><table class="mini-table"><tr><th>Improved</th><th>Start &rarr; Sep 3</th></tr><tr><td><i class="ti ti-arrow-up" style="color:var(--green);"></i> Navodaya Coaching</td><td class="num-cell">12 &rarr; 3</td></tr><tr><td><i class="ti ti-arrow-up" style="color:var(--green);"></i> Neet Coaching</td><td class="num-cell">3 &rarr; 1</td></tr><tr><td><i class="ti ti-arrow-up" style="color:var(--green);"></i> Rms Coaching</td><td class="num-cell">4 &rarr; 2</td></tr><tr><td><i class="ti ti-arrow-up" style="color:var(--green);"></i> Cma Coaching</td><td class="num-cell">6 &rarr; 4</td></tr><tr><td><i class="ti ti-arrow-up" style="color:var(--green);"></i> Ssc Coaching</td><td class="num-cell">4 &rarr; 2</td></tr><tr><td><i class="ti ti-arrow-up" style="color:var(--green);"></i> Cet Coaching Centres</td><td class="num-cell">3 &rarr; 2</td></tr></table></div>
+<div class="card-outline"><h3><i class="ti ti-arrow-down-right"></i>Declined</h3><table class="mini-table"><tr><th>Declined</th><th>Start &rarr; Sep 3</th></tr><tr><td><i class="ti ti-arrow-down" style="color:var(--red);"></i> Sainik Coaching</td><td class="num-cell">5 &rarr; 16</td></tr><tr><td><i class="ti ti-arrow-down" style="color:var(--red);"></i> Cuet Coaching</td><td class="num-cell">5 &rarr; 15</td></tr><tr><td><i class="ti ti-arrow-down" style="color:var(--red);"></i> Ibps Coaching</td><td class="num-cell">3 &rarr; 5</td></tr></table></div>
+</div>
+</div>
+</section>
+<section class="slide" data-section="SEO Review" data-slide="34">
+<div class="slide-inner">
+<div class="eyebrow"><i class="ti ti-list-numbers"></i> SEO &middot; Malleshwaram &middot; Full rankings</div>
+<h2 class="title">Malleshwaram &mdash; all tracked keywords</h2>
+<p class="lede">Every keyword checked for this branch, start of tracking vs. 3 September.</p>
+<table class="rank-table"><tbody><tr><td class="kw">Neet Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval good">1</span><span class="delta up">&#9650; from 3</span></span></td></tr><tr><td class="kw">Navodaya Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval good">3</span><span class="delta up">&#9650; from 12</span></span></td></tr><tr><td class="kw">Sainik School Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Sainik Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval bad">16</span><span class="delta down">&#9660; from 5</span></span></td></tr><tr><td class="kw">Rms Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval good">2</span><span class="delta up">&#9650; from 4</span></span></td></tr><tr><td class="kw">School Tuition</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Ncert School Tuition</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Cbse Tuition</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Cbse School Tuition</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Icse School Tuition</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Igcse Tuition</td><td class="branch-col"><span class="rankpill"><span class="rankval bad">36</span><span class="delta new">NEW</span></span></td></tr><tr><td class="kw">12Th Science Coaching Classes</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span><span class="delta lost">LOST</span></span></td></tr><tr><td class="kw">12Th Commerce Coaching Classes</td><td class="branch-col"><span class="rankpill"><span class="rankval bad">42</span><span class="delta new">NEW</span></span></td></tr><tr><td class="kw">Cet Coaching Centres</td><td class="branch-col"><span class="rankpill"><span class="rankval good">2</span><span class="delta up">&#9650; from 3</span></span></td></tr><tr><td class="kw">Cet Coaching Classes</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Cet Coaching Centre</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Iit Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval good">1</span><span class="delta flat">= from 1</span></span></td></tr><tr><td class="kw">Ca Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval bad">31</span><span class="delta new">NEW</span></span></td></tr><tr><td class="kw">Cs Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Cma Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval good">4</span><span class="delta up">&#9650; from 6</span></span></td></tr><tr><td class="kw">Cma Coaching Centre</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Ibps Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval good">5</span><span class="delta down">&#9660; from 3</span></span></td></tr><tr><td class="kw">Banking Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval good">3</span><span class="delta flat">= from 3</span></span></td></tr><tr><td class="kw">Ssc Cgl Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Ssc Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval good">2</span><span class="delta up">&#9650; from 4</span></span></td></tr><tr><td class="kw">Clat Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Cuet Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval mid">15</span><span class="delta down">&#9660; from 5</span></span></td></tr><tr><td class="kw">Kptcl Coaching Classes</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Kptcl Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr><tr><td class="kw">Coaching</td><td class="branch-col"><span class="rankpill"><span class="rankval good">1</span><span class="delta up">&#9650; from 2</span></span></td></tr><tr><td class="kw">Coaching Centre</td><td class="branch-col"><span class="rankpill"><span class="rankval na">N/A</span></span></td></tr></tbody></table>
+</div>
+</section>
+<section class="slide" data-section="SEO Review Roadmap" data-slide="35">
+<div class="slide-inner"><div class="eyebrow"><i class="ti ti-calendar-time"></i> SEO roadmap</div><h2 class="title">Roadmap &mdash; priorities from this data</h2><p class="lede">Ordered by where the numbers show the most leverage.</p><div class="grid-2"><div class="card-outline"><h3 style="font-size:14px;"><span class="agenda-num" style="width:auto; margin-right:6px;">01</span>Build the missing School Tuition pages</h3><p style="font-size:12.5px; color:var(--text-dim);">34 of 40 branch/keyword combinations are still N/A on organic search — this is the single biggest structural gap in the account.</p></div><div class="card-outline"><h3 style="font-size:14px;"><span class="agenda-num" style="width:auto; margin-right:6px;">02</span>Recover Malleshwaram's Sainik and CUET pages</h3><p style="font-size:12.5px; color:var(--text-dim);">Both fell 10+ places this period while nothing else in the branch moved — check for a de-indexed page, lost backlink, or new local competitor.</p></div><div class="card-outline"><h3 style="font-size:14px;"><span class="agenda-num" style="width:auto; margin-right:6px;">03</span>Investigate Jayanagar's CA content</h3><p style="font-size:12.5px; color:var(--text-dim);">Unranked on GBP and fell from 4&rarr;23 on organic in the same window — confirm the CA landing page for this branch actually exists and is indexed.</p></div><div class="card-outline"><h3 style="font-size:14px;"><span class="agenda-num" style="width:auto; margin-right:6px;">04</span>Confirm CLAT's status with the decision-maker</h3><p style="font-size:12.5px; color:var(--text-dim);">Almost entirely N/A across every branch on both channels — decide whether this is worth pursuing before allocating more content time to it.</p></div><div class="card-outline"><h3 style="font-size:14px;"><span class="agenda-num" style="width:auto; margin-right:6px;">05</span>Protect Koramangala and Yelahanka's gains</h3><p style="font-size:12.5px; color:var(--text-dim);">Both branches improved this period (avg 3.5&rarr;2.3 and 4.4&rarr;2.9) — keep the cadence that's working rather than reallocating that effort elsewhere.</p></div></div></div>
+</section>
+<section class="slide" data-section="SEO Review Roadmap" data-slide="36">
+<div class="slide-inner">
+<div class="eyebrow"><i class="ti ti-flag-check"></i> SEO success metrics</div>
+<h2 class="title">Next check-in</h2>
+<p class="lede">What "improvement" needs to look like when this is compared again.</p>
+<div class="card-outline"><ul><li>At least the highest-intent School Tuition x branch pages live and indexed</li><li>Malleshwaram's Sainik and CUET pages back near their July levels</li><li>Jayanagar's CA coaching page confirmed to exist and re-checked</li><li>CLAT status confirmed with the decision-maker, one way or the other</li><li>Koramangala and Yelahanka's gains holding, not reverting</li></ul></div>
+</div>
+</section>
+<section class="slide" data-section="GBP vs SEO" data-slide="37">
+<div class="slide-inner">
+<div class="eyebrow"><i class="ti ti-arrows-diff"></i> GBP vs SEO, 3 September snapshot</div>
+<h2 class="title">Where the two channels agree and diverge</h2>
+<p class="lede"><span style="color:var(--purple-2); font-family:'JetBrains Mono',monospace;">G</span> = GBP map-pack rank vs. <span style="color:var(--pink-2); font-family:'JetBrains Mono',monospace;">S</span> = organic rank. Red = 10+ rank gap. Green = closely agree (within 3).</p>
+<table class="comp-table"><thead><tr><th style="text-align:left;">Keyword</th><th>Koramangala</th><th>Yelahanka</th><th>Jayanagar</th><th>Malleshwaram</th></tr></thead><tbody><tr><td class="kw">Neet Coaching</td><td class="agree"><div class="comp-pair"><span class="g">G:1</span><span class="s">S:3</span></div></td><td class="agree"><div class="comp-pair"><span class="g">G:4</span><span class="s">S:4</span></div></td><td class="agree"><div class="comp-pair"><span class="g">G:5</span><span class="s">S:3</span></div></td><td class="agree"><div class="comp-pair"><span class="g">G:1</span><span class="s">S:1</span></div></td></tr><tr><td class="kw">Navodaya Coaching</td><td class=""><div class="comp-pair"><span class="g">G:6</span><span class="s">S:2</span></div></td><td class="diverge"><div class="comp-pair"><span class="g">G:23</span><span class="s">S:4</span></div></td><td class="diverge"><div class="comp-pair"><span class="g">G:14</span><span class="s">S:3</span></div></td><td class="agree"><div class="comp-pair"><span class="g">G:3</span><span class="s">S:3</span></div></td></tr><tr><td class="kw">Sainik School Coaching</td><td class=""><div class="comp-pair"><span class="g">G:N/A</span><span class="s">S:N/A</span></div></td><td class=""><div class="comp-pair"><span class="g">G:N/A</span><span class="s">S:N/A</span></div></td><td class=""><div class="comp-pair"><span class="g">G:N/A</span><span class="s">S:N/A</span></div></td><td class=""><div class="comp-pair"><span class="g">G:N/A</span><span class="s">S:N/A</span></div></td></tr><tr><td class="kw">Sainik Coaching</td><td class=""><div class="comp-pair"><span class="g">G:1</span><span class="s">S:5</span></div></td><td class="agree"><div class="comp-pair"><span class="g">G:7</span><span class="s">S:4</span></div></td><td class="agree"><div class="comp-pair"><span class="g">G:6</span><span class="s">S:5</span></div></td><td class=""><div class="comp-pair"><span class="g">G:N/A</span><span class="s">S:16</span></div></td></tr><tr><td class="kw">Rms Coaching</td><td class="agree"><div class="comp-pair"><span class="g">G:2</span><span class="s">S:1</span></div></td><td class="agree"><div class="comp-pair"><span class="g">G:2</span><span class="s">S:1</span></div></td><td class=""><div class="comp-pair"><span class="g">G:7</span><span class="s">S:2</span></div></td><td class="agree"><div class="comp-pair"><span class="g">G:4</span><span class="s">S:2</span></div></td></tr><tr><td class="kw">School Tuition</td><td class=""><div class="comp-pair"><span class="g">G:N/A</span><span class="s">S:N/A</span></div></td><td class=""><div class="comp-pair"><span class="g">G:15</span><span class="s">S:N/A</span></div></td><td class=""><div class="comp-pair"><span class="g">G:N/A</span><span class="s">S:N/A</span></div></td><td class=""><div class="comp-pair"><span class="g">G:3</span><span class="s">S:N/A</span></div></td></tr><tr><td class="kw">Ncert School Tuition</td><td class=""><div class="comp-pair"><span class="g">G:4</span><span class="s">S:N/A</span></div></td><td class=""><div class="comp-pair"><span class="g">G:8</span><span class="s">S:N/A</span></div></td><td class=""><div class="comp-pair"><span class="g">G:5</span><span class="s">S:N/A</span></div></td><td class=""><div class="comp-pair"><span class="g">G:2</span><span class="s">S:N/A</span></div></td></tr><tr><td class="kw">Cbse Tuition</td><td class=""><div class="comp-pair"><span class="g">G:N/A</span><span class="s">S:N/A</span></div></td><td class=""><div class="comp-pair"><span class="g">G:N/A</span><span class="s">S:N/A</span></div></td><td class=""><div class="comp-pair"><span class="g">G:N/A</span><span class="s">S:N/A</span></div></td><td class=""><div class="comp-pair"><span class="g">G:N/A</span><span class="s">S:N/A</span></div></td></tr><tr><td class="kw">Cbse School Tuition</td><td class=""><div class="comp-pair"><span class="g">G:N/A</span><span class="s">S:N/A</span></div></td><td class=""><div class="comp-pair"><span class="g">G:18</span><span class="s">S:N/A</span></div></td><td class=""><div class="comp-pair"><span class="g">G:30</span><span class="s">S:N/A</span></div></td><td class=""><div class="comp-pair"><span class="g">G:5</span><span class="s">S:N/A</span></div></td></tr><tr><td class="kw">Icse School Tuition</td><td class=""><div class="comp-pair"><span class="g">G:N/A</span><span class="s">S:N/A</span></div></td><td class=""><div class="comp-pair"><span class="g">G:21</span><span class="s">S:N/A</span></div></td><td class=""><div class="comp-pair"><span class="g">G:26</span><span class="s">S:N/A</span></div></td><td class=""><div class="comp-pair"><span class="g">G:11</span><span class="s">S:N/A</span></div></td></tr><tr><td class="kw">Igcse Tuition</td><td class=""><div class="comp-pair"><span class="g">G:N/A</span><span class="s">S:N/A</span></div></td><td class=""><div class="comp-pair"><span class="g">G:8</span><span class="s">S:N/A</span></div></td><td class=""><div class="comp-pair"><span class="g">G:8</span><span class="s">S:N/A</span></div></td><td class="diverge"><div class="comp-pair"><span class="g">G:4</span><span class="s">S:36</span></div></td></tr><tr><td class="kw">12Th Science Coaching Classes</td><td class=""><div class="comp-pair"><span class="g">G:N/A</span><span class="s">S:3</span></div></td><td class=""><div class="comp-pair"><span class="g">G:N/A</span><span class="s">S:N/A</span></div></td><td class=""><div class="comp-pair"><span class="g">G:N/A</span><span class="s">S:42</span></div></td><td class=""><div class="comp-pair"><span class="g">G:N/A</span><span class="s">S:N/A</span></div></td></tr><tr><td class="kw">12Th Commerce Coaching Classes</td><td class=""><div class="comp-pair"><span class="g">G:5</span><span class="s">S:N/A</span></div></td><td class=""><div class="comp-pair"><span class="g">G:4</span><span class="s">S:N/A</span></div></td><td class=""><div class="comp-pair"><span class="g">G:10</span><span class="s">S:3</span></div></td><td class="diverge"><div class="comp-pair"><span class="g">G:2</span><span class="s">S:42</span></div></td></tr><tr><td class="kw">Cet Coaching Centres</td><td class=""><div class="comp-pair"><span class="g">G:N/A</span><span class="s">S:N/A</span></div></td><td class="agree"><div class="comp-pair"><span class="g">G:3</span><span class="s">S:2</span></div></td><td class=""><div class="comp-pair"><span class="g">G:N/A</span><span class="s">S:N/A</span></div></td><td class="agree"><div class="comp-pair"><span class="g">G:1</span><span class="s">S:2</span></div></td></tr><tr><td class="kw">Cet Coaching Classes</td><td class="agree"><div class="comp-pair"><span class="g">G:2</span><span class="s">S:3</span></div></td><td class=""><div class="comp-pair"><span class="g">G:N/A</span><span class="s">S:N/A</span></div></td><td class=""><div class="comp-pair"><span class="g">G:N/A</span><span class="s">S:N/A</span></div></td><td class=""><div class="comp-pair"><span class="g">G:N/A</span><span class="s">S:N/A</span></div></td></tr><tr><td class="kw">Cet Coaching Centre</td><td class=""><div class="comp-pair"><span class="g">G:N/A</span><span class="s">S:N/A</span></div></td><td class=""><div class="comp-pair"><span class="g">G:N/A</span><span class="s">S:N/A</span></div></td><td class=""><div class="comp-pair"><span class="g">G:9</span><span class="s">S:3</span></div></td><td class=""><div class="comp-pair"><span class="g">G:N/A</span><span class="s">S:N/A</span></div></td></tr><tr><td class="kw">Iit Coaching</td><td class="agree"><div class="comp-pair"><span class="g">G:1</span><span class="s">S:1</span></div></td><td class="agree"><div class="comp-pair"><span class="g">G:1</span><span class="s">S:1</span></div></td><td class="agree"><div class="comp-pair"><span class="g">G:1</span><span class="s">S:1</span></div></td><td class="agree"><div class="comp-pair"><span class="g">G:1</span><span class="s">S:1</span></div></td></tr><tr><td class="kw">Ca Coaching</td><td class=""><div class="comp-pair"><span class="g">G:N/A</span><span class="s">S:3</span></div></td><td class="diverge"><div class="comp-pair"><span class="g">G:13</span><span class="s">S:2</span></div></td><td class=""><div class="comp-pair"><span class="g">G:N/A</span><span class="s">S:23</span></div></td><td class=""><div class="comp-pair"><span class="g">G:N/A</span><span class="s">S:31</span></div></td></tr><tr><td class="kw">Cs Coaching</td><td class="agree"><div class="comp-pair"><span class="g">G:4</span><span class="s">S:2</span></div></td><td class=""><div class="comp-pair"><span class="g">G:6</span><span class="s">S:N/A</span></div></td><td class=""><div class="comp-pair"><span class="g">G:N/A</span><span class="s">S:5</span></div></td><td class=""><div class="comp-pair"><span class="g">G:7</span><span class="s">S:N/A</span></div></td></tr><tr><td class="kw">Cma Coaching</td><td class=""><div class="comp-pair"><span class="g">G:N/A</span><span class="s">S:N/A</span></div></td><td class=""><div class="comp-pair"><span class="g">G:N/A</span><span class="s">S:N/A</span></div></td><td class=""><div class="comp-pair"><span class="g">G:N/A</span><span class="s">S:N/A</span></div></td><td class=""><div class="comp-pair"><span class="g">G:N/A</span><span class="s">S:4</span></div></td></tr><tr><td class="kw">Cma Coaching Centre</td><td class=""><div class="comp-pair"><span class="g">G:N/A</span><span class="s">S:N/A</span></div></td><td class=""><div class="comp-pair"><span class="g">G:N/A</span><span class="s">S:3</span></div></td><td class=""><div class="comp-pair"><span class="g">G:N/A</span><span class="s">S:5</span></div></td><td class=""><div class="comp-pair"><span class="g">G:N/A</span><span class="s">S:N/A</span></div></td></tr><tr><td class="kw">Ibps Coaching</td><td class=""><div class="comp-pair"><span class="g">G:8</span><span class="s">S:1</span></div></td><td class="agree"><div class="comp-pair"><span class="g">G:2</span><span class="s">S:2</span></div></td><td class="diverge"><div class="comp-pair"><span class="g">G:14</span><span class="s">S:2</span></div></td><td class="agree"><div class="comp-pair"><span class="g">G:7</span><span class="s">S:5</span></div></td></tr><tr><td class="kw">Banking Coaching</td><td class=""><div class="comp-pair"><span class="g">G:9</span><span class="s">S:3</span></div></td><td class=""><div class="comp-pair"><span class="g">G:3</span><span class="s">S:7</span></div></td><td class="diverge"><div class="comp-pair"><span class="g">G:23</span><span class="s">S:2</span></div></td><td class=""><div class="comp-pair"><span class="g">G:7</span><span class="s">S:3</span></div></td></tr><tr><td class="kw">Ssc Cgl Coaching</td><td class=""><div class="comp-pair"><span class="g">G:N/A</span><span class="s">S:N/A</span></div></td><td class=""><div class="comp-pair"><span class="g">G:N/A</span><span class="s">S:N/A</span></div></td><td class=""><div class="comp-pair"><span class="g">G:N/A</span><span class="s">S:N/A</span></div></td><td class=""><div class="comp-pair"><span class="g">G:N/A</span><span class="s">S:N/A</span></div></td></tr><tr><td class="kw">Ssc Coaching</td><td class=""><div class="comp-pair"><span class="g">G:6</span><span class="s">S:2</span></div></td><td class="agree"><div class="comp-pair"><span class="g">G:1</span><span class="s">S:2</span></div></td><td class=""><div class="comp-pair"><span class="g">G:9</span><span class="s">S:2</span></div></td><td class="agree"><div class="comp-pair"><span class="g">G:3</span><span class="s">S:2</span></div></td></tr><tr><td class="kw">Clat Coaching</td><td class=""><div class="comp-pair"><span class="g">G:N/A</span><span class="s">S:N/A</span></div></td><td class=""><div class="comp-pair"><span class="g">G:10</span><span class="s">S:N/A</span></div></td><td class=""><div class="comp-pair"><span class="g">G:N/A</span><span class="s">S:N/A</span></div></td><td class=""><div class="comp-pair"><span class="g">G:N/A</span><span class="s">S:N/A</span></div></td></tr><tr><td class="kw">Cuet Coaching</td><td class=""><div class="comp-pair"><span class="g">G:2</span><span class="s">S:N/A</span></div></td><td class="agree"><div class="comp-pair"><span class="g">G:1</span><span class="s">S:4</span></div></td><td class="diverge"><div class="comp-pair"><span class="g">G:5</span><span class="s">S:20</span></div></td><td class="diverge"><div class="comp-pair"><span class="g">G:2</span><span class="s">S:15</span></div></td></tr><tr><td class="kw">Kptcl Coaching Classes</td><td class=""><div class="comp-pair"><span class="g">G:N/A</span><span class="s">S:N/A</span></div></td><td class=""><div class="comp-pair"><span class="g">G:N/A</span><span class="s">S:N/A</span></div></td><td class=""><div class="comp-pair"><span class="g">G:N/A</span><span class="s">S:N/A</span></div></td><td class=""><div class="comp-pair"><span class="g">G:N/A</span><span class="s">S:N/A</span></div></td></tr><tr><td class="kw">Kptcl Coaching</td><td class=""><div class="comp-pair"><span class="g">G:1</span><span class="s">S:N/A</span></div></td><td class=""><div class="comp-pair"><span class="g">G:2</span><span class="s">S:N/A</span></div></td><td class=""><div class="comp-pair"><span class="g">G:6</span><span class="s">S:N/A</span></div></td><td class=""><div class="comp-pair"><span class="g">G:1</span><span class="s">S:N/A</span></div></td></tr><tr><td class="kw">Coaching</td><td class="agree"><div class="comp-pair"><span class="g">G:4</span><span class="s">S:1</span></div></td><td class=""><div class="comp-pair"><span class="g">G:6</span><span class="s">S:2</span></div></td><td class="diverge"><div class="comp-pair"><span class="g">G:13</span><span class="s">S:1</span></div></td><td class="agree"><div class="comp-pair"><span class="g">G:2</span><span class="s">S:1</span></div></td></tr><tr><td class="kw">Coaching Centre</td><td class=""><div class="comp-pair"><span class="g">G:N/A</span><span class="s">S:N/A</span></div></td><td class=""><div class="comp-pair"><span class="g">G:N/A</span><span class="s">S:N/A</span></div></td><td class=""><div class="comp-pair"><span class="g">G:N/A</span><span class="s">S:N/A</span></div></td><td class=""><div class="comp-pair"><span class="g">G:N/A</span><span class="s">S:N/A</span></div></td></tr></tbody></table>
+</div>
+</section>
+<section class="slide" data-section="Site Gap" data-slide="38">
+<div class="slide-inner">
+<div class="eyebrow"><i class="ti ti-sitemap"></i> The structural gap behind the N/A wall</div>
+<h2 class="title">Why so many keywords are still N/A</h2>
+<p class="lede">The website has generic location pages and generic course pages &mdash; but not the intersection of the two.</p>
+<svg class="silo-svg" viewBox="0 0 820 380" fill="none">
+<rect x="20" y="170" width="90" height="40" rx="8" fill="#2A2158" stroke="#3D2E6B"/>
+<text x="65" y="195" fill="#F3F0FA" font-size="14" font-family="Inter" font-weight="600" text-anchor="middle">Home</text>
+<path d="M110 190 L150 190" stroke="#7B5FC4" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="160" y="60" width="150" height="42" rx="8" fill="#221A4D" stroke="#F0837C" stroke-width="1.5" stroke-dasharray="5,4"/>
+<text x="235" y="86" fill="#F0837C" font-size="13" font-family="Inter" font-weight="600" text-anchor="middle">Course (e.g. School Tuition)</text>
+<path d="M235 102 L235 130" stroke="#F0837C" stroke-width="2" stroke-dasharray="4,3"/>
+<rect x="140" y="132" width="190" height="42" rx="8" fill="#221A4D" stroke="#F0837C" stroke-width="1.5" stroke-dasharray="5,4"/>
+<text x="235" y="158" fill="#F0837C" font-size="12" font-family="Inter" font-weight="600" text-anchor="middle">Course + Location pages</text>
+<text x="235" y="200" fill="#F0837C" font-size="12" font-family="Inter" font-weight="700" text-anchor="middle">&#10007; Still missing</text>
+<rect x="400" y="60" width="150" height="42" rx="8" fill="#221A4D" stroke="#3FBE7A" stroke-width="1.5"/>
+<text x="475" y="86" fill="#3FBE7A" font-size="13" font-family="Inter" font-weight="600" text-anchor="middle">Offline Centers</text>
+<path d="M475 102 L475 130" stroke="#3FBE7A" stroke-width="2"/>
+<rect x="390" y="132" width="170" height="42" rx="8" fill="#221A4D" stroke="#3FBE7A" stroke-width="1.5"/>
+<text x="475" y="158" fill="#3FBE7A" font-size="12" font-family="Inter" font-weight="600" text-anchor="middle">Location pages</text>
+<text x="475" y="200" fill="#3FBE7A" font-size="12" font-family="Inter" font-weight="700" text-anchor="middle">&#10003; We have this</text>
+<path d="M150 180 L160 100" stroke="#7B5FC4" stroke-width="1.5"/>
+<path d="M150 180 L400 100" stroke="#7B5FC4" stroke-width="1.5"/>
+<defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#7B5FC4"/></marker></defs>
+<rect x="120" y="250" width="580" height="90" rx="12" fill="#2A2158" stroke="#3D2E6B"/>
+<text x="410" y="280" fill="#F5A3C7" font-size="13" font-family="Inter" font-weight="700" text-anchor="middle">The gap, in plain terms:</text>
+<text x="410" y="305" fill="#F3F0FA" font-size="12" font-family="Inter" text-anchor="middle">We have generic location pages (Coaching in Yelahanka) and generic course pages (NEET Coaching in Bangalore).</text>
+<text x="410" y="325" fill="#F3F0FA" font-size="12" font-family="Inter" text-anchor="middle">We still don't have the intersection: "School Tuition in Yelahanka" — the exact page that would rank.</text>
+</svg>
+<div class="callout red"><i class="ti ti-alert-triangle"></i><div><b>This single structural gap</b> explains most of the N/A results in School Tuition, and a large share of the Navodaya/Sainik/RMS and CLAT gaps too.</div></div>
+</div>
+</section>
+<section class="slide" data-section="Close" data-slide="39">
+<div class="slide-inner">
+<div class="eyebrow"><i class="ti ti-hand-stop"></i> Close</div>
+<h2 class="title">What happens next</h2>
+<div class="card-purple">
+<h3><i class="ti ti-checkbox"></i>Priorities from this review</h3>
+<ul>
+<li>Build the missing School Tuition x branch pages — the single biggest lever on both channels</li>
+<li>Investigate Malleshwaram's Sainik/CUET SEO drop and Jayanagar's CA gap</li>
+<li>Fix Jayanagar's GBP listing signals — lowest average rank of any branch</li>
+<li>Confirm CLAT's status before investing more content time in it</li>
+</ul>
+</div>
+<div class="card-outline"><h3><i class="ti ti-report"></i>At the next check-in</h3><ul><li>Re-run this same comparison against today's numbers</li><li>Confirm whether the priorities above moved the needle</li></ul></div>
+</div>
+</section>
+</div><!-- /deck -->
+<div class="nav-controls">
+<div class="nav-left">
+<span class="nav-brand"><i class="ti ti-school"></i><span class="brand-text">ELITE IIT</span></span>
+<span class="slide-counter"><b id="curNum">1</b> / <span id="totalNum">2</span></span>
+<button class="jump-btn" id="jumpBtn"><i class="ti ti-layout-grid"></i><span class="jump-text">Jump to slide</span></button>
+</div>
+<div class="nav-right">
+<div class="ctrl-btn" id="prevBtn"><i class="ti ti-chevron-left"></i></div>
+<div class="ctrl-btn" id="nextBtn"><i class="ti ti-chevron-right"></i></div>
+</div>
+</div>
+<div id="jumpMenu">
+<div class="jump-panel">
+<span class="jump-close" id="jumpClose">×</span>
+<h3><i class="ti ti-layout-grid"></i> Jump to any slide</h3>
+<div class="jump-grid" id="jumpGrid"></div>
+</div>
+</div>
+<script>
+
+function initDeck(){
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  let cur = 0;
+  const totalNumEl = document.getElementById('totalNum');
+  const curNumEl = document.getElementById('curNum');
+  const progressFill = document.getElementById('progressFill');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+
+  function render(){
+    slides.forEach((s,i)=> s.classList.toggle('active', i===cur));
+    curNumEl.textContent = cur+1;
+    totalNumEl.textContent = slides.length;
+    progressFill.style.width = ((cur+1)/slides.length*100)+'%';
+    prevBtn.classList.toggle('disabled', cur===0);
+    nextBtn.classList.toggle('disabled', cur===slides.length-1);
+    slides[cur].scrollTop = 0;
+  }
+  function goTo(i){
+    if(i<0) i=0; if(i>=slides.length) i=slides.length-1;
+    cur=i; render();
+  }
+  prevBtn.addEventListener('click', ()=>goTo(cur-1));
+  nextBtn.addEventListener('click', ()=>goTo(cur+1));
+  document.addEventListener('keydown', (e)=>{
+    if(document.getElementById('jumpMenu').classList.contains('open')) return;
+    if(e.key==='ArrowRight'||e.key===' ') { e.preventDefault(); goTo(cur+1); }
+    if(e.key==='ArrowLeft') { e.preventDefault(); goTo(cur-1); }
+    if(e.key==='Escape') { document.getElementById('jumpMenu').classList.remove('open'); }
+  });
+
+  const jumpBtn = document.getElementById('jumpBtn');
+  const jumpMenu = document.getElementById('jumpMenu');
+  const jumpClose = document.getElementById('jumpClose');
+  const jumpGrid = document.getElementById('jumpGrid');
+  jumpGrid.innerHTML = slides.map((s,i)=>{
+    const label = s.querySelector('h1,h2')?.textContent?.trim() || s.dataset.section || ('Slide '+(i+1));
+    const section = s.dataset.section || '';
+    return `<div class="jump-slide-btn" data-i="${i}"><span class="n">${String(i+1).padStart(2,'0')}</span><span>${label} <span style="color:var(--text-dim); opacity:.7;">— ${section}</span></span></div>`;
+  }).join('');
+  jumpGrid.querySelectorAll('.jump-slide-btn').forEach(btn=>{
+    btn.addEventListener('click', ()=>{ goTo(parseInt(btn.dataset.i,10)); jumpMenu.classList.remove('open'); });
+  });
+  jumpBtn.addEventListener('click', ()=> jumpMenu.classList.add('open'));
+  jumpClose.addEventListener('click', ()=> jumpMenu.classList.remove('open'));
+  jumpMenu.addEventListener('click', (e)=>{ if(e.target===jumpMenu) jumpMenu.classList.remove('open'); });
+
+  const deckEl = document.getElementById('deck');
+  let touchStartX = 0, touchStartY = 0;
+  deckEl.addEventListener('touchstart', (e)=>{
+    touchStartX = e.changedTouches[0].screenX;
+    touchStartY = e.changedTouches[0].screenY;
+  }, {passive:true});
+  deckEl.addEventListener('touchend', (e)=>{
+    if(jumpMenu.classList.contains('open')) return;
+    const dx = e.changedTouches[0].screenX - touchStartX;
+    const dy = e.changedTouches[0].screenY - touchStartY;
+    if(Math.abs(dx) > 55 && Math.abs(dx) > Math.abs(dy) * 1.4){
+      if(dx < 0) goTo(cur+1); else goTo(cur-1);
+    }
+  }, {passive:true});
+
+  render();
+}
+document.addEventListener('DOMContentLoaded', initDeck);
+
+</script>
+</body>
+</html>
